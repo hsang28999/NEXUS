@@ -1,2 +1,96 @@
-﻿body {
+﻿
+
+.header-homepage {
+    background-color: #fff;
+    height: auto;
+    position: sticky;
+    top: 0;
+}
+
+.logo-header img {
+    max-height: 60px !important;
+}
+
+.logo-header {
+    margin: 10px 10px 10px 50px;
+    display: inline-block;
+}
+
+.btn-header {
+    display: inline-block;
+    float: right;
+    margin: 20px 50px 10px 20px;
+}
+
+.btn-header button {
+    width: 130px;
+    height: 40px;
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+}
+
+    .btn-header .btn-login-head {
+        color: #074cff;
+    }
+
+    .btn-header .btn-res-head {
+        background-color: #074cff;
+        color: #fff;
+    }
+
+.footer-homepage {
+    background-color: #5a5a5a;
+    color: #fff;
+    height: auto;
+}
+
+.ft-text {
+    display: inline-block;
+    padding: 10px;
+}
+
+.ft-logo {
+    padding: 4px 20px 0 0;
+    float: right;
+    display: inline-block;
+}
+
+.ft-logo img {
+    width: 50px;
+}
+
+.logo-modal-log,
+.logo-modal-res {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.logo-modal-log img, .logo-modal-res img {
+    width: 80px;
+}
+
+.main-modal-log .formm, .main-modal-res .formm {
+    padding: 0 100px 0 100px;
+}
+
+.form-log input, .form-res input {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 20px;
+}
+
+.btn-login-modal, .btn-res-modal {
+    margin-bottom: 15px;
+}
+
+.formm p {
+    margin-bottom: 40px;
+}
+
+.formm span {
+    color: blue;
+}
+
+.formm span:hover {
+    cursor: pointer;
 }
