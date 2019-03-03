@@ -27,9 +27,28 @@
             <div class="logo-header">
                 <img src="https://i.imgur.com/QDKpQct.png" alt="Alternate Text" />
             </div>
-            <div class="btn-header">
+            @*<div class="btn-header">
                 <button data-toggle="modal" data-target="#loginmodal" class="btn btn-login-head">ĐĂNG NHẬP</button>
                 <button data-toggle="modal" data-target="#registermodal" class="btn btn-res-head">ĐĂNG KÝ</button>
+            </div>*@
+            <div class="loginsucess ">
+                <div class="dropdown">
+                    <div class="nameacc dropdown-toggle" data-toggle="dropdown">
+                        User : <span class="username">Đào Tuấn Tú</span>
+                        <span class="caret"></span>
+                    </div>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Thông Tin Tài Khoản</a></li>
+                        <li><a href="#">Đăng Xuất</a></li>
+                    </ul>
+                </div>
+                <div class="position">
+                    Chức Vụ : <span class="positionname">Khách Hàng</span>
+                </div>
+            </div>
+            <div class="aboutus">
+                <a href="#">Giới Thiệu</a> | 
+                <a href="#">Các Gói Mạng</a>
             </div>
         </div>
         @RenderBody()
