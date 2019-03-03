@@ -39,9 +39,11 @@
     }
 
 .footer-homepage {
-    background-color: #5a5a5a;
-    color: #fff;
+    color: #909090;
     height: auto;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 .ft-text {
