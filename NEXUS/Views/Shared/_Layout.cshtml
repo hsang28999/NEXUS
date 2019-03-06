@@ -21,7 +21,7 @@
     <link rel="stylesheet" type="text/css" href="/Content/Home/productdetail.css">
     <link rel="stylesheet" type="text/css" href="/Content/Home/userprofile.css">
 </head>
-<body ng-controller="MainCtrl">
+<body ng-controller="MainCtrl" ng-init="loadLayout()">
     <div class="main">
         <div class="header-homepage">
             <a href='@Url.Action("Index", "Home", new { id = UrlParameter.Optional })'>
@@ -29,10 +29,9 @@
                     <img src="https://i.imgur.com/QDKpQct.png" alt="Alternate Text" />
                 </div>
             </a>
-            @*<div class="btn-header">
-            <button data-toggle="modal" data-target="#loginmodal" class="btn btn-login-head">ĐĂNG NHẬP</button>
-            <button data-toggle="modal" data-target="#registermodal" class="btn btn-res-head">ĐĂNG KÝ</button>
-        </div>*@
+            <div class="btn-header">
+            <button data-toggle="modal" ng-click="displayLogin = true" data-target="#loginmodal" class="btn btn-login-head">LOGIN</button>
+        </div>
             <div class="loginsucess ">
                 <div class="dropdown">
                     <div class="nameacc dropdown-toggle" data-toggle="dropdown">
@@ -40,18 +39,18 @@
                         <span class="caret"></span>
                     </div>
                     <ul class="dropdown-menu">
-                        <li><a href='@Url.Action("UserProfile", "Home", new { id = UrlParameter.Optional })'>Thông Tin Tài Khoản</a></li>
-                        <li><a href='@Url.Action("History", "Home", new { id = UrlParameter.Optional })'>Lịch Sử Giao Dịch</a></li>
-                        <li><a href='@Url.Action("UserProfile", "Home", new { id = UrlParameter.Optional })'>Đăng Xuất</a></li>
+                        <li><a href='@Url.Action("UserProfile", "Home", new { id = UrlParameter.Optional })'>Account</a></li>
+                        <li><a href='@Url.Action("History", "Home", new { id = UrlParameter.Optional })'>Transaction history</a></li>
+                        <li><a href='@Url.Action("UserProfile", "Home", new { id = UrlParameter.Optional })'>Logout</a></li>
                     </ul>
                 </div>
                 <div class="position">
-                    Chức Vụ : <span class="positionname">Khách Hàng</span>
+                    Chức Vụ : <span class="positionname">Customer</span>
                 </div>
             </div>
             <div class="aboutus">
-                <a href='@Url.Action("AboutUs", "Home", new { id = UrlParameter.Optional })'>Giới Thiệu</a> |
-                <a href='@Url.Action("Product", "Home", new { id = UrlParameter.Optional })'>Các Gói Mạng</a>
+                <a href='@Url.Action("AboutUs", "Home", new { id = UrlParameter.Optional })'>AboutUs</a> |
+                <a href='@Url.Action("Product", "Home", new { id = UrlParameter.Optional })'>Services</a>
             </div>
         </div>
         @RenderBody()
@@ -70,26 +69,7 @@
                         <div class="logo-modal-log">
                             <img src="https://i.imgur.com/QDKpQct.png" alt="Alternate Text" />
                         </div>
-                        <div class="formm">
-                            <form action="/" method="post" class="form form-log">
-                                <input class="form-control" type="text" name="name" value="" placeholder="Tên đăng nhập" />
-                                <input class="form-control" type="password" name="name" value="" placeholder="Mật khẩu" />
-                                <button class="form-control btn-success btn-login-modal">Đăng Nhập</button>
-                            </form>
-                            <p>Nếu chưa có tài khoản vui lòng <span id="modaldis-login">Đăng Ký</span> !</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="registermodal" class="modal " role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="main-modal-res">
-                        <div class="logo-modal-res">
-                            <img src="https://i.imgur.com/QDKpQct.png" alt="Alternate Text" />
-                        </div>
-                        <div class="formm">
+                        <div class="formm" ng-hide="displayLogin">
                             <form action="/" method="post" class="form form-res">
                                 <input class="form-control" type="text" name="name" value="" placeholder="Tên đăng nhập" />
                                 <input class="form-control" type="text" name="name" value="" placeholder="Email" />
@@ -98,7 +78,15 @@
                                 <input class="form-control" type="password" name="name" value="" placeholder="Nhập Lại Mật khẩu" />
                                 <button class="form-control btn-success btn-res-modal">Hoàn Tất</button>
                             </form>
-                            <p>Nếu đã có tài khoản vui lòng <span id="modaldis-res">Đăng Nhập</span> !</p>
+                            <p>Nếu đã có tài khoản vui lòng <span ng-click="displayLogin = !displayLogin" id="modaldis-res">Đăng Nhập</span> !</p>
+                        </div>
+                        <div class="formm" ng-hide="!displayLogin">
+                            <form action="/" method="post" class="form form-log">
+                                <input class="form-control" type="text" name="name" value="" placeholder="Tên đăng nhập" />
+                                <input class="form-control" type="password" name="name" value="" placeholder="Mật khẩu" />
+                                <button class="form-control btn-success btn-login-modal">Đăng Nhập</button>
+                            </form>
+                            <p>Nếu chưa có tài khoản vui lòng <span ng-click="displayLogin = !displayLogin" id="modaldis-login">Đăng Ký</span> !</p>
                         </div>
                     </div>
                 </div>
