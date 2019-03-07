@@ -55,6 +55,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -188,12 +190,78 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\NexusController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\ConvertDatetime.cs" />
+    <Compile Include="Helper\Encrypt.cs" />
+    <Compile Include="Helper\FormattedDbEntityValidationException .cs" />
+    <Compile Include="Helper\HMTLHelperExtensions.cs" />
+    <Compile Include="Helper\URL.cs" />
+    <Compile Include="Models\connection.cs">
+      <DependentUpon>NexusModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\connection_group.cs">
+      <DependentUpon>NexusModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\contract.cs">
+      <DependentUpon>NexusModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\coupon.cs">
+      <DependentUpon>NexusModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\employee_store.cs">
+      <DependentUpon>NexusModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NexusModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NexusModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NexusModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NexusModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NexusModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NexusModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\order.cs">
+      <DependentUpon>NexusModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\product.cs">
+      <DependentUpon>NexusModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\product_store.cs">
+      <DependentUpon>NexusModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\report.cs">
+      <DependentUpon>NexusModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\role.cs">
+      <DependentUpon>NexusModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\store.cs">
+      <DependentUpon>NexusModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Token.cs" />
+    <Compile Include="Models\user.cs">
+      <DependentUpon>NexusModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Models\user_profile.cs">
+      <DependentUpon>NexusModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\UserService.cs" />
+    <Compile Include="Services\GenericRepository.cs" />
+    <Compile Include="Services\IService.cs" />
+    <Compile Include="Services\Service.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -253,6 +321,16 @@
     <Content Include="html\product.html" />
     <Content Include="html\productdetail.html" />
     <Content Include="html\userprofile.html" />
+    <Content Include="Models\NexusModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NexusModel.edmx</DependentUpon>
+      <LastGenOutput>NexusModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\NexusModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NexusModel.edmx</DependentUpon>
+      <LastGenOutput>NexusModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-cookies.min.js" />
     <Content Include="Scripts\angular-datepicker.js" />
@@ -276,6 +354,13 @@
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
     <Content Include="Scripts\datetime-picker.js" />
     <Content Include="Scripts\imageupload.js" />
+    <EntityDeploy Include="Models\NexusModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NexusModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\NexusModel.edmx.diagram">
+      <DependentUpon>NexusModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -315,7 +400,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Views\Nexus\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -333,6 +418,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b840ebe8ec1d4b8f83c7d66a46aa7ad6" Name="Diagram1">
+        <EntityTypeShape EntityType="NexusDBModel.connection" Width="1.5" PointX="1.5" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NexusDBModel.connection_group" Width="1.5" PointX="1.5" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NexusDBModel.contract" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NexusDBModel.coupon" Width="1.5" PointX="8.25" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NexusDBModel.employee_store" Width="1.5" PointX="6" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="NexusDBModel.order" Width="1.5" PointX="11.25" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NexusDBModel.product" Width="1.5" PointX="3.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NexusDBModel.product_store" Width="1.5" PointX="6" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="NexusDBModel.report" Width="1.5" PointX="8.25" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NexusDBModel.role" Width="1.5" PointX="3.75" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NexusDBModel.store" Width="1.5" PointX="0.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="NexusDBModel.user" Width="1.5" PointX="6" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NexusDBModel.user_profile" Width="1.5" PointX="8.25" PointY="24.375" IsExpanded="true" />
+        <AssociationConnector Association="NexusDBModel.FK__product__connect__114A936A" ManuallyRouted="false" />
+        <AssociationConnector Association="NexusDBModel.FK__product__connect__123EB7A3" ManuallyRouted="false" />
+        <AssociationConnector Association="NexusDBModel.FK__contract__coupon__1DB06A4F" ManuallyRouted="false" />
+        <AssociationConnector Association="NexusDBModel.FK__contract__employ__1AD3FDA4" ManuallyRouted="false" />
+        <AssociationConnector Association="NexusDBModel.FK__contract__produc__18EBB532" ManuallyRouted="false" />
+        <AssociationConnector Association="NexusDBModel.FK__contract__store___1BC821DD" ManuallyRouted="false" />
+        <AssociationConnector Association="NexusDBModel.FK__contract__user_i__19DFD96B" ManuallyRouted="false" />
+        <AssociationConnector Association="NexusDBModel.FK__contract__user_u__1CBC4616" ManuallyRouted="false" />
+        <AssociationConnector Association="NexusDBModel.FK__coupon__user_cre__151B244E" ManuallyRouted="false" />
+        <AssociationConnector Association="NexusDBModel.FK__coupon__user_use__160F4887" ManuallyRouted="false" />
+        <AssociationConnector Association="NexusDBModel.FK__employee___emplo__245D67DE" ManuallyRouted="false" />
+        <AssociationConnector Association="NexusDBModel.FK__employee___store__25518C17" ManuallyRouted="false" />
+        <AssociationConnector Association="NexusDBModel.FK__order__customer___29221CFB" ManuallyRouted="false" />
+        <AssociationConnector Association="NexusDBModel.FK__order__employee___2A164134" ManuallyRouted="false" />
+        <AssociationConnector Association="NexusDBModel.FK__order__product_i__282DF8C2" ManuallyRouted="false" />
+        <AssociationConnector Association="NexusDBModel.FK__product_s__produ__208CD6FA" ManuallyRouted="false" />
+        <AssociationConnector Association="NexusDBModel.FK__product_s__store__2180FB33" ManuallyRouted="false" />
+        <AssociationConnector Association="NexusDBModel.FK__report__customer__2CF2ADDF" ManuallyRouted="false" />
+        <AssociationConnector Association="NexusDBModel.FK__user__role_id__04E4BC85" ManuallyRouted="false" />
+        <AssociationConnector Association="NexusDBModel.FK__user__store_id__05D8E0BE" ManuallyRouted="false" />
+        <AssociationConnector Association="NexusDBModel.FK__user_prof__user___0A9D95DB" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
