@@ -17,4 +17,4 @@
     'ui.select'
 ]);
 
-//var API = "http://localhost:62935/api/tpbank/";
+var API = "http://localhost:55555/api/nexus/";
