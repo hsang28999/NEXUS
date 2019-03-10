@@ -1,2 +1,122 @@
-﻿body {
+﻿.limit-size {
+    color: #253be7;
+    font-size: 50px;
+}
+.text-center p {
+    font-weight: bold;
+}
+.col-xs-12 {
+    font-family: Arial;
+    font-size: 16px
+}
+.row {
+    width: 760px;
+    height: 150px;
+}
+
+.img-responsive.img-phuong-cham {
+    border-radius: 42px;
+    padding-top: 0;
+    box-shadow: -5px -7px 3px 4px #6d6e96;
+}
+div.text-center.bold.col-sm-6.col-md-20-percent {
+    width: 152px;
+    height: 147px;
+}
+.img-responsive {
+    padding-top: 30px;
+}
+.box-bg-white {
+    background: #fff;
+    display: inline-block;
+    width: 100%;
+    padding-top: 35px;
+}
+.title-item {
+    margin: 10px 0;
+    height: auto;
+    display: inline-block;
+    color: #253be7;
+    border-bottom: 2px solid #253be7;
+    padding: 5px 0;
+    text-transform: uppercase;
+    font-size: 25px;
+    font-weight: bold;
+}
+.list-style-orange {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+.list-style-orange > li {
+    padding-left: 13px;
+    margin-bottom: 7px;
+    background-size: 4px 4px;
+}
+ul li {
+    margin: 0;
+    list-style: none;
+}
+.img-center {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+.table-cell {
+    display: table-cell;
+    vertical-align: bottom;
+    float: none;
+}
+.box-bg-gray {
+    background: #ebebeb;
+    width: 100%;
+}
+.list-style-orange {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+.col-xs-12.col-sm-7 img {
+    margin: 50px 0 0 -55px;
+    box-shadow: -5px 10px 12px 5px #757886;
+}
+.add-contact-footer > div.col-xs-6 {
+    padding-top: 25px;
+}
+.no-pad-right {
+    padding-right: 0;
+}
+.call-19006600 {
+    padding: 10px 0 0 0;
+    margin: 0 0 0 -40px;
+}
+.phone-cc-large {
+    font-weight: bold;
+    font-size: 50px;
+    color: #040784;
+}
+.map {
+    width: 585px;
+    height: 330px;
+}
+.img {
+    width: 1365px;
+    height: 360px;
+}
+.col-xs-12.col-sm-4.text-center {
+    padding-top: 35px;
+    padding-left: 0px;
+}
+.col-xs-12.col-sm-8 {
+    padding-right: 0px;
+    padding-left: 85px;
+}
+.col-xs-12.col-sm-4.text-center p {
+    font-size: 40px;
+    font-weight: bold;
+}
+.img-responsive1{
+    padding-left:95px;
+    padding-bottom:50px;
+    padding-top:50px;
 }

@@ -1,9 +1,14 @@
 function MainCtrl($scope,$rootScope,$stateParams, $location,$timeout, xhrService,$anchorScroll) {
     $scope.loadLayout = function() {
-        if (!(localStorage && localStorage.getItem('admin'))) {
-            window.location.href = "/login";
-        };
+        //if (!(localStorage && localStorage.getItem('admin'))) {
+        //    window.location.href = "/login";
+
+        //};
+        $scope.displayLogin = true;
+
     }
+
+
 
 
     $scope.test = function() {
