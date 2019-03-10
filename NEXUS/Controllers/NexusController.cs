@@ -70,6 +70,7 @@ namespace NEXUS.Controllers
 
                 return new UserModel()
                 {
+                    FullName = UserProfile.full_name,
                     PhoneNumber = UserAccount.phone_number,
                     UserCode = "UID_" + UserAccount.user_id.ToString().PadLeft(5, '0'),
                     Token = Encrypt.Base64Encode(JsonConvert.SerializeObject(token))
@@ -86,6 +87,7 @@ namespace NEXUS.Controllers
             {
                 ExceptionContent(HttpStatusCode.InternalServerError, "err_username_or_password_invalid");
             }
+            var UserProfile = _service.GetUserProfileByPhoneNumber(model.PhoneNumber);
 
             var token = new TokenModel()
             {
@@ -96,6 +98,7 @@ namespace NEXUS.Controllers
 
             return new UserModel()
             {
+                FullName = UserProfile.full_name,
                 PhoneNumber = UserAccount.phone_number,
                 UserCode = "UID_" + UserAccount.user_id.ToString().PadLeft(5, '0'),
                 Token = Encrypt.Base64Encode(JsonConvert.SerializeObject(token))
@@ -131,5 +134,8 @@ namespace NEXUS.Controllers
             
             _service.SaveUserProfile(User);
         }
+
+        //[HttpGet]
+
     }
 }
