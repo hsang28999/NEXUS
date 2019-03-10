@@ -1,10 +1,22 @@
-function MainCtrl($scope,$rootScope,$stateParams, $location,$timeout, xhrService,$anchorScroll) {
+function MainCtrl($scope, $rootScope, $stateParams, $location, $timeout, xhrService, $anchorScroll) {
+    var user = JSON.parse(localStorage.getItem('user'));
     $scope.loadLayout = function() {
         //if (!(localStorage && localStorage.getItem('admin'))) {
         //    window.location.href = "/login";
-
         //};
-        $scope.displayLogin = true;
+
+        if (user === null) {
+            $scope.showBtnLog = false;
+            $scope.showInfoLog = true;
+        }
+        else {
+            myEl = angular.element(document.querySelector('.username'));
+            myEl.html(user.FullName);
+            $scope.showBtnLog = true;
+            $scope.showInfoLog = false;
+        }
+
+
 
     }
 
@@ -34,6 +46,42 @@ function MainCtrl($scope,$rootScope,$stateParams, $location,$timeout, xhrService
         str = str.replace(/\”|\“|\"|\[|\]|\?/g, "");
         return str;
     };
+
+    $scope.register = function () {
+        var dataSend = {
+            "PhoneNumber": $scope.regphone,
+            "Email": $scope.regemail,
+            "Password": $scope.regpass,
+            "FullName": $scope.regfullname
+        };
+        xhrService.post("Register", dataSend).then(function (data) {
+            alert("dang ki thanh cong" + " " + data.data.Token)
+        }, function (error) {
+            console.log(error);
+            alert(error.statusText);
+        });
+    }
+
+    $scope.login = function () {
+        var dataSend = {
+            "PhoneNumber": $scope.logphone,
+            "Password": $scope.logpass
+        };
+        xhrService.post("Login", dataSend).then(function (data) {
+            console.log(data);
+            alert("dang nhap thanh cong, xin chao" + " " + data.data.FullName)
+            localStorage.setItem('user', JSON.stringify(data.data));
+            location.reload();
+        }, function (error) {
+            console.log(error);
+            alert(error.statusText);
+        });
+    }
+
+    $scope.Logout = function () {
+        localStorage.clear();
+        location.reload();
+    }
 }
 
 app.controller('MainCtrl', MainCtrl);

@@ -30,18 +30,18 @@
                 </div>
             </a>
             <div class="btn-header">
-            <button data-toggle="modal" ng-click="displayLogin = true" data-target="#loginmodal" class="btn btn-login-head">LOGIN</button>
+            <button data-toggle="modal" ng-hide="showBtnLog" ng-click="displayLogin = true" data-target="#loginmodal" class="btn btn-login-head">LOGIN</button>
         </div>
-            <div class="loginsucess ">
+            <div class="loginsucess" ng-hide="showInfoLog">
                 <div class="dropdown">
                     <div class="nameacc dropdown-toggle" data-toggle="dropdown">
-                        User : <span class="username">Đào Tuấn Tú</span>
+                        User : <span class="username"></span>
                         <span class="caret"></span>
                     </div>
                     <ul class="dropdown-menu">
                         <li><a href='@Url.Action("UserProfile", "Home", new { id = UrlParameter.Optional })'>Account</a></li>
                         <li><a href='@Url.Action("History", "Home", new { id = UrlParameter.Optional })'>Transaction history</a></li>
-                        <li><a href='@Url.Action("UserProfile", "Home", new { id = UrlParameter.Optional })'>Logout</a></li>
+                        <li><a ng-click="Logout()" href=''>Logout</a></li>
                     </ul>
                 </div>
                 <div class="position">
@@ -70,21 +70,21 @@
                             <img src="https://i.imgur.com/QDKpQct.png" alt="Alternate Text" />
                         </div>
                         <div class="formm" ng-hide="displayLogin">
-                            <form action="/" method="post" class="form form-res">
-                                <input class="form-control" type="text" name="name" value="" placeholder="Tên đăng nhập" />
-                                <input class="form-control" type="text" name="name" value="" placeholder="Email" />
-                                <input class="form-control" type="text" name="name" value="" placeholder="Địa Chỉ" />
-                                <input class="form-control" type="password" name="name" value="" placeholder="Mật khẩu" />
+                            <form ng-submit="register()" class="form form-res">
+                                <input class="form-control" type="text" name="name" value="" placeholder="Số Điện Thoại" ng-model='regphone'/>
+                                <input class="form-control" type="text" name="name" value="" placeholder="Họ Và Tên" ng-model='regfullname'/>
+                                <input class="form-control" type="text" name="name" value="" placeholder="Email" ng-model='regemail'/>
+                                <input class="form-control" type="password" name="name" value="" placeholder="Mật khẩu" ng-model='regpass'/>
                                 <input class="form-control" type="password" name="name" value="" placeholder="Nhập Lại Mật khẩu" />
-                                <button class="form-control btn-success btn-res-modal">Hoàn Tất</button>
+                                <button type="submit" class="form-control btn-success btn-res-modal">Hoàn Tất</button>
                             </form>
                             <p>Nếu đã có tài khoản vui lòng <span ng-click="displayLogin = !displayLogin" id="modaldis-res">Đăng Nhập</span> !</p>
                         </div>
                         <div class="formm" ng-hide="!displayLogin">
-                            <form action="/" method="post" class="form form-log">
-                                <input class="form-control" type="text" name="name" value="" placeholder="Tên đăng nhập" />
-                                <input class="form-control" type="password" name="name" value="" placeholder="Mật khẩu" />
-                                <button class="form-control btn-success btn-login-modal">Đăng Nhập</button>
+                            <form ng-submit="login()" class="form form-log">
+                                <input class="form-control" type="text" name="name" value="" placeholder="Số Điện Thoại" ng-model='logphone'/>
+                                <input class="form-control" type="password" name="name" value="" placeholder="Mật khẩu" ng-model='logpass'/>
+                                <button type="submit" class="form-control btn-success btn-login-modal">Đăng Nhập</button>
                             </form>
                             <p>Nếu chưa có tài khoản vui lòng <span ng-click="displayLogin = !displayLogin" id="modaldis-login">Đăng Ký</span> !</p>
                         </div>
