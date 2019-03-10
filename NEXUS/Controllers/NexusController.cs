@@ -70,6 +70,7 @@ namespace NEXUS.Controllers
 
                 return new UserModel()
                 {
+                    Id = UserAccount.user_id,
                     FullName = UserProfile.full_name,
                     PhoneNumber = UserAccount.phone_number,
                     UserCode = "UID_" + UserAccount.user_id.ToString().PadLeft(5, '0'),
@@ -98,6 +99,7 @@ namespace NEXUS.Controllers
 
             return new UserModel()
             {
+                Id = UserAccount.user_id,
                 FullName = UserProfile.full_name,
                 PhoneNumber = UserAccount.phone_number,
                 UserCode = "UID_" + UserAccount.user_id.ToString().PadLeft(5, '0'),
