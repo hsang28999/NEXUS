@@ -1,4 +1,7 @@
 function MainCtrl($scope, $rootScope, $stateParams, $location, $timeout, xhrService, $anchorScroll) {
+    toastr.options = {
+        "positionClass": "toast-bottom-right",
+    }
     var user = JSON.parse(localStorage.getItem('user'));
     $scope.loadLayout = function() {
         //if (!(localStorage && localStorage.getItem('admin'))) {
@@ -15,13 +18,7 @@ function MainCtrl($scope, $rootScope, $stateParams, $location, $timeout, xhrServ
             $scope.showBtnLog = true;
             $scope.showInfoLog = false;
         }
-
-
-
     }
-
-
-
 
     $scope.test = function() {
             xhrService.get("GetAccountDetail/1").then(function (data) {
@@ -55,10 +52,24 @@ function MainCtrl($scope, $rootScope, $stateParams, $location, $timeout, xhrServ
             "FullName": $scope.regfullname
         };
         xhrService.post("Register", dataSend).then(function (data) {
-            alert("dang ki thanh cong" + " " + data.data.Token)
+            var myToast = toastr.success('Auto login after 5 second', 'Register Success', { timeOut: 0 });
+            var n = 5;
+            setTimeout(countDown, 1000);
+            function countDown() {
+                n--;
+                if (n > 0) {
+                    setTimeout(countDown, 1000);
+                }
+                myToast.find(".toast-message").text('Auto login after ' + n + ' second');
+            }
+            setTimeout(() => {   
+                localStorage.clear();
+                localStorage.setItem('user', JSON.stringify(data.data));
+                location.reload();
+            }, 5000);
         }, function (error) {
             console.log(error);
-            alert(error.statusText);
+            toastr.error(error.statusText, 'Error');
         });
     }
 
@@ -69,18 +80,25 @@ function MainCtrl($scope, $rootScope, $stateParams, $location, $timeout, xhrServ
         };
         xhrService.post("Login", dataSend).then(function (data) {
             console.log(data);
-            alert("dang nhap thanh cong, xin chao" + " " + data.data.FullName)
             localStorage.setItem('user', JSON.stringify(data.data));
-            location.reload();
+            toastr.success('Welcome' + ' ' + data.data.FullName, 'Login Success');
+            setTimeout(() => {   
+                location.reload();
+            }, 2000);
         }, function (error) {
+            
+            toastr.error(error.statusText, 'Error');
             console.log(error);
-            alert(error.statusText);
         });
     }
 
     $scope.Logout = function () {
-        localStorage.clear();
-        location.reload();
+        if (confirm('Do you want to logout ?')) {
+            localStorage.clear();
+            location.reload();
+            window.location.href = "/";
+        }
+        
     }
 }
 
