@@ -120,3 +120,8 @@
     font-weight: 400;
     cursor: pointer;
 }
+
+button[type="submit"]:disabled {
+    background-color: #909090;
+    color: #eaeaea;
+}
