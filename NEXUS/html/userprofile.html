@@ -1,3 +1,58 @@
-﻿<div ng-controller="UserProfileCtrl">
-
+﻿<div ng-controller="UserProfileCtrl" ng-init="loadUserProfile()">
+    <div class="contentpageuser">
+        <div class="mainuserprofile">
+            <div class="ul1" ng-show="ul1">
+                <ul class="ultitle">
+                    <li>ID :</li>
+                    <li>FullName :</li>
+                    <li>PhoneNumber :</li>
+                    <li>Money :</li>
+                    <li>Email :</li>
+                    <li>Address :</li>
+                </ul>
+                <ul class="ulcontent">
+                    <li class="liID"></li>
+                    <li class="liFullName"></li>
+                    <li class="liPhoneNumber"></li>
+                    <li class="liMoney"></li>
+                    <li class="liEmail"></li>
+                    <li class="liAddress"></li>
+                </ul>
+            </div>
+            <div class="ui2" ng-show="ul2">
+                <ul class="ultitle">
+                    <li>ID :</li>
+                    <li>FullName :</li>
+                    <li>PhoneNumber :</li>
+                    <li>Money :</li>
+                    <li>Email :</li>
+                    <li>Address :</li>
+                    <li>•</li>
+                </ul>
+                <ul class="ulform">
+                    <form action="/" method="post">
+                        <li><input class="id" type="type" name="name" value="" ng-model="ID" disabled/></li>
+                        <li><input type="type" name="name" value=""  ng-model="FullName"/></li>
+                        <li><input type="type" name="name" value=""  ng-model="PhoneNumber"/></li>
+                        <li><input class="money" type="type" name="name" value=""  ng-model="Money" disabled/></li>
+                        <li><input type="type" name="name" value=""  ng-model="Email"/></li>
+                        <li><input type="type" name="name" value=""  ng-model="Address"/></li>
+                        <button class="form-control btn btn-success">Save</button>
+                    </form>
+                </ul>
+            </div>
+        </div>
+        <div class="formchangepass form-group" ng-show="ul3">
+            <form action="/" method="post">
+                <input class="form-control" type="text" name="name" value="" placeholder="Old Password" required/>
+                <input class="form-control" type="text" name="name" value="" placeholder="New Password" required/>
+                <button class="form-control btn btn-success">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="btnuser">
+        <button ng-click="showul1()" class="btn btn-info btn-default">Show Info</button>
+        <button ng-click="showul2()" class="btn btn-info btn-default">Update Info</button>
+        <button ng-click="showul3()" class="btn btn-info btn-default">Change Password</button>
+    </div>
 </div>
