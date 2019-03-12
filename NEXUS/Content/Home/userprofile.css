@@ -1,2 +1,49 @@
-﻿body {
+﻿ul {
+    display: inline-block;
+}
+
+.ultitle li {
+    margin-right: 50px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 5px;
+}
+
+.ulcontent li {
+    text-align: left;
+    font-size: 18px; 
+    padding: 5px;
+}
+
+.ulform li {
+    font-size: 15px;
+    padding: 4px;
+}
+
+.mainuserprofile {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.btnuser {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.btnuser button {
+    min-width: 220px;
+}
+
+.formchangepass {
+    text-align: center;
+    margin: 0 400px 0 400px;
+}
+
+.formchangepass form input, .formchangepass form button {
+    margin-top: 10px;
+}
+
+.ulform form .id, .ulform form .money {
+    cursor: no-drop;
 }
