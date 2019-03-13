@@ -191,7 +191,6 @@ C:\Project\NEXUS\NEXUS\bin\Microsoft.AI.DependencyCollector.xml
 C:\Project\NEXUS\NEXUS\bin\Microsoft.AI.WindowsServer.xml
 C:\Project\NEXUS\NEXUS\bin\Microsoft.AI.Web.xml
 C:\Project\NEXUS\NEXUS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Project\NEXUS\NEXUS\obj\Debug\NEXUS.csprojAssemblyReference.cache
 C:\Project\NEXUS\NEXUS\obj\Debug\NEXUS.csproj.CoreCompileInputs.cache
 C:\Project\NEXUS\NEXUS\obj\Debug\NEXUS.csproj.CopyComplete
 C:\Project\NEXUS\NEXUS\obj\Debug\NEXUS.dll
@@ -297,3 +296,4 @@ C:\Users\Admin\Documents\GitHub\Nexus\NEXUS\obj\Debug\NEXUS.csproj.CoreCompileIn
 C:\Users\Admin\Documents\GitHub\Nexus\NEXUS\obj\Debug\NEXUS.csproj.CopyComplete
 C:\Users\Admin\Documents\GitHub\Nexus\NEXUS\obj\Debug\NEXUS.dll
 C:\Users\Admin\Documents\GitHub\Nexus\NEXUS\obj\Debug\NEXUS.pdb
+C:\Project\NEXUS\NEXUS\obj\Debug\NEXUS.csprojAssemblyReference.cache

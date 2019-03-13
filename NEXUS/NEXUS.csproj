@@ -204,6 +204,8 @@
     <Compile Include="Models\connection.cs">
       <DependentUpon>NexusModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ConnectionGroupModel.cs" />
+    <Compile Include="Models\ConnectionModel.cs" />
     <Compile Include="Models\connection_group.cs">
       <DependentUpon>NexusModel.tt</DependentUpon>
     </Compile>
@@ -234,9 +236,11 @@
     <Compile Include="Models\order.cs">
       <DependentUpon>NexusModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PagingResult.cs" />
     <Compile Include="Models\product.cs">
       <DependentUpon>NexusModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\product_store.cs">
       <DependentUpon>NexusModel.tt</DependentUpon>
     </Compile>
@@ -258,6 +262,7 @@
       <DependentUpon>NexusModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ProductService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Services\GenericRepository.cs" />
     <Compile Include="Services\IService.cs" />
@@ -348,6 +353,7 @@
     <Content Include="Scripts\app\directives.js" />
     <Content Include="Scripts\app\mainctrl.js" />
     <Content Include="Scripts\app\services.js" />
+    <Content Include="Scripts\app\userprofilectrl.js" />
     <Content Include="Scripts\base64.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
