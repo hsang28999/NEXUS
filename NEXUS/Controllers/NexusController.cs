@@ -107,6 +107,22 @@ namespace NEXUS.Controllers
             };
         }
 
+        //[HttpGet]
+        //[Route("Test")]
+        //public List<UserModel> Test()
+        //{
+        //    var User = _service.GetUserById(2);
+        //    return User.user_profile.Select(p => new UserModel()
+        //    {
+        //        Email = p.email,
+        //        FullName = p.full_name,
+        //        Gender = p.gender,
+        //        Money = p.money,
+        //        Address = p.address,
+        //        PhoneNumber = p.phone_number
+        //    }).ToList();
+        //}
+
         [HttpGet]
         [Route("GetUserProfile/{id}")]
         public UserModel GetUserProfile(int id)
@@ -138,6 +154,50 @@ namespace NEXUS.Controllers
         }
 
         //[HttpGet]
+        //[Route("GetListProduct")]
+        //public List<ConnectionModel> GetListProduct()
+        //{
+        //    var connections = _service.GetListConnect();
+        //    return connections.Select(q => new ConnectionModel()
+        //    {
+        //        Name = q.connection_name,
+        //        SecurityDeposit = q.security_deposit,
+        //        ConnectionGroups = _service.GetListConnectionGroupsByConnectionId(q.connection_id),
+        //    }).ToList();
+        //}
+
+        [HttpGet]
+        [Route("GetListProduct")]
+        public List<ConnectionModel> GetListProduct()
+        {
+            var connections = _service.GetListConnect();
+            return connections.Select(q => new ConnectionModel()
+            {
+                Name = q.connection_name,
+                SecurityDeposit = q.security_deposit,
+                ConnectionGroups = q.connection_group.Select(c => new ConnectionGroupModel()
+                {
+                    Bandwidth = c.bandwidth,
+                    Name = c.connection_group_name,
+                    Products = c.product.Select(p => new ProductModel()
+                    {
+                        ConnectionGroupId = p.connection_group_id,
+                        Description = p.description,
+                        PpmLocal = p.ppm_local,
+                        PpmMobile = p.ppm_mobile,
+                        PpmStd = p.ppm_std,
+                        Price = p.price,
+                        ProductId = p.product_id,
+                        ProductName = p.product_name,
+                        Status = p.status,
+                        TimeType = p.time_type,
+                        TimeUsed = p.time_used,
+                        Type = p.type,
+                        MonthAvailable = p.month_available,
+                    }).ToList()
+                }).ToList(),
+            }).ToList();
+        }
 
     }
 }

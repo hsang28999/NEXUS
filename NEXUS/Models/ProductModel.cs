@@ -20,5 +20,6 @@ namespace NEXUS.Models
         public int Status { get; set; }
         public int ConnectionId { get; set; }
         public int ConnectionGroupId { get; set; }
+        public int MonthAvailable { get; set; }
     }
 }

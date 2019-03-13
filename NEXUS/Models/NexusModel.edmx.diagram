@@ -4,21 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b840ebe8ec1d4b8f83c7d66a46aa7ad6" Name="Diagram1">
-        <EntityTypeShape EntityType="NexusDBModel.connection" Width="1.5" PointX="1.5" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="NexusDBModel.connection_group" Width="1.5" PointX="1.5" PointY="8.375" IsExpanded="true" />
+      <Diagram DiagramId="2e07cebaeab24cce987e3eff19d9dc2b" Name="Diagram1">
+        <EntityTypeShape EntityType="NexusDBModel.connection" Width="1.5" PointX="1.5" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NexusDBModel.connection_group" Width="1.5" PointX="1.5" PointY="7" IsExpanded="true" />
         <EntityTypeShape EntityType="NexusDBModel.contract" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
         <EntityTypeShape EntityType="NexusDBModel.coupon" Width="1.5" PointX="8.25" PointY="14.5" IsExpanded="true" />
         <EntityTypeShape EntityType="NexusDBModel.employee_store" Width="1.5" PointX="6" PointY="14" IsExpanded="true" />
         <EntityTypeShape EntityType="NexusDBModel.order" Width="1.5" PointX="11.25" PointY="17.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="NexusDBModel.product" Width="1.5" PointX="3.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NexusDBModel.product" Width="1.5" PointX="3.75" PointY="5.875" IsExpanded="true" />
         <EntityTypeShape EntityType="NexusDBModel.product_store" Width="1.5" PointX="6" PointY="11" IsExpanded="true" />
         <EntityTypeShape EntityType="NexusDBModel.report" Width="1.5" PointX="8.25" PointY="21.875" IsExpanded="true" />
         <EntityTypeShape EntityType="NexusDBModel.role" Width="1.5" PointX="3.75" PointY="19.25" IsExpanded="true" />
         <EntityTypeShape EntityType="NexusDBModel.store" Width="1.5" PointX="0.75" PointY="14" IsExpanded="true" />
         <EntityTypeShape EntityType="NexusDBModel.user" Width="1.5" PointX="6" PointY="16.75" IsExpanded="true" />
         <EntityTypeShape EntityType="NexusDBModel.user_profile" Width="1.5" PointX="8.25" PointY="24.375" IsExpanded="true" />
-        <AssociationConnector Association="NexusDBModel.FK__product__connect__114A936A" ManuallyRouted="false" />
+        <AssociationConnector Association="NexusDBModel.FK__connectio__conne__2DE6D218" ManuallyRouted="false" />
         <AssociationConnector Association="NexusDBModel.FK__product__connect__123EB7A3" ManuallyRouted="false" />
         <AssociationConnector Association="NexusDBModel.FK__contract__coupon__1DB06A4F" ManuallyRouted="false" />
         <AssociationConnector Association="NexusDBModel.FK__contract__employ__1AD3FDA4" ManuallyRouted="false" />

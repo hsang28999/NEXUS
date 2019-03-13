@@ -33,10 +33,9 @@ namespace NEXUS.Models
         public Nullable<decimal> ppm_std { get; set; }
         public Nullable<decimal> ppm_mobile { get; set; }
         public int status { get; set; }
-        public int connection_id { get; set; }
         public int connection_group_id { get; set; }
+        public int month_available { get; set; }
     
-        public virtual connection connection { get; set; }
         public virtual connection_group connection_group { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<contract> contract { get; set; }

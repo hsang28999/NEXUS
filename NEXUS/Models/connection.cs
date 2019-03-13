@@ -17,7 +17,7 @@ namespace NEXUS.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public connection()
         {
-            this.product = new HashSet<product>();
+            this.connection_group = new HashSet<connection_group>();
         }
     
         public int connection_id { get; set; }
@@ -25,6 +25,6 @@ namespace NEXUS.Models
         public string connection_name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<product> product { get; set; }
+        public virtual ICollection<connection_group> connection_group { get; set; }
     }
 }

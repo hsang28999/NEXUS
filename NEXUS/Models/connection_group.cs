@@ -23,7 +23,9 @@ namespace NEXUS.Models
         public int connection_group_id { get; set; }
         public Nullable<int> bandwidth { get; set; }
         public string connection_group_name { get; set; }
+        public int connection_id { get; set; }
     
+        public virtual connection connection { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<product> product { get; set; }
     }
