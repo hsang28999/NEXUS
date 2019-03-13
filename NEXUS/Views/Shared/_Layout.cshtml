@@ -30,8 +30,8 @@
                 </div>
             </a>
             <div class="btn-header">
-            <button data-toggle="modal" ng-hide="showBtnLog" ng-click="displayLogin = true" data-target="#loginmodal" class="btn btn-login-head">LOGIN</button>
-        </div>
+                <button data-toggle="modal" ng-hide="showBtnLog" ng-click="displayLogin = true" data-target="#loginmodal" class="btn btn-login-head">LOGIN</button>
+            </div>
             <div class="loginsucess" ng-hide="showInfoLog">
                 <div class="dropdown">
                     <div class="nameacc dropdown-toggle" data-toggle="dropdown">
@@ -59,8 +59,8 @@
                 Copyright 3TSD © 2019
             </div>
             @*<div class="ft-logo">
-                <img src="https://i.imgur.com/QDKpQct.png" alt="Alternate Text" />
-            </div>*@
+                    <img src="https://i.imgur.com/QDKpQct.png" alt="Alternate Text" />
+                </div>*@
         </div>
         <div id="loginmodal" class="modal " role="dialog">
             <div class="modal-dialog">
@@ -72,13 +72,13 @@
                         <div class="formm" ng-hide="displayLogin">
                             <form name="userForm" ng-submit="register()" class="form form-res" novalidate>
                                 <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine }">
-                                    <input class="form-control" type="number" name="nregphone" value="" placeholder="Phone Number" ng-model='regphone' required ng-minlength="9"/>
+                                    <input class="form-control" type="number" name="nregphone" value="" placeholder="Phone Number" ng-model='regphone' required ng-minlength="9" />
                                     <span ng-show="userForm.nregphone.$invalid && !userForm.nregphone.$pristine" class="alert alert-danger help-block">Number Phone must be greater than 9 characters</span>
-                                    <input class="form-control" type="text" name="nregname" value="" placeholder="FullName" ng-model='regfullname' required ng-minlength="6"/>
+                                    <input class="form-control" type="text" name="nregname" value="" placeholder="FullName" ng-model='regfullname' required ng-minlength="6" />
                                     <span ng-show="userForm.nregname.$invalid && !userForm.nregname.$pristine" class="alert alert-danger help-block">FullName must be greater than 5 characters</span>
-                                    <input class="form-control" type="email" name="nregemail" value="" placeholder="Email" ng-model='regemail' required ng-minlength="6"/>
+                                    <input class="form-control" type="email" name="nregemail" value="" placeholder="Email" ng-model='regemail' required ng-minlength="6" />
                                     <span ng-show="userForm.nregemail.$invalid && !userForm.nregemail.$pristine" class="alert alert-danger help-block">Enter a valid email.</span>
-                                    <input class="form-control" type="password" name="nregpass" value="" placeholder="Password" ng-model='regpass' required ng-minlength="6"/>
+                                    <input class="form-control" type="password" name="nregpass" value="" placeholder="Password" ng-model='regpass' required ng-minlength="6" />
                                     <span ng-show="userForm.nregpass.$invalid && !userForm.nregpass.$pristine" class="alert alert-danger help-block">Password must be greater than 5 characters</span>
                                     <button ng-disabled="userForm.$invalid" type="submit" class="form-control btn-success btn-res-modal">Hoàn Tất</button>
                                 </div>
@@ -88,9 +88,9 @@
                         <div class="formm" ng-hide="!displayLogin">
                             <form name="LoguserForm" ng-submit="login()" class="form form-log" novalidate>
                                 <div class="form-group" ng-class="{ 'has-error' : LoguserForm.name.$invalid && !LoguserForm.name.$pristine }">
-                                    <input class="form-control" type="text" name="nlogphone" value="" placeholder="Số Điện Thoại" ng-model='logphone' required/>
+                                    <input class="form-control" type="text" name="nlogphone" value="" placeholder="Số Điện Thoại" ng-model='logphone' required />
                                     <span ng-show="LoguserForm.nlogphone.$invalid && !LoguserForm.nlogphone.$pristine" class="alert alert-danger help-block">Enter Number Phone</span>
-                                    <input class="form-control" type="password" name="nlogpass" value="" placeholder="Mật khẩu" ng-model='logpass' required/>
+                                    <input class="form-control" type="password" name="nlogpass" value="" placeholder="Mật khẩu" ng-model='logpass' required />
                                     <span ng-show="LoguserForm.nlogpass.$invalid && !LoguserForm.nlogpass.$pristine" class="alert alert-danger help-block">Enter Password</span>
                                     <button ng-disabled="LoguserForm.$invalid" type="submit" class="form-control btn-success btn-login-modal">Đăng Nhập</button>
                                 </div>
@@ -131,6 +131,7 @@
     <script src="/Scripts/app/services.js"></script>
     <script src="/Scripts/app/directives.js"></script>
     <script type="text/javascript" src="/Scripts/app/mainctrl.js"></script>
-    <script src="/Scripts/app/userprofile.js"></script>
+    <script src="/Scripts/app/userprofilectrl.js"></script>
+    <script src="/Scripts/app/productctrl.js"></script>
 </body>
 </html>

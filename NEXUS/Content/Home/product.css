@@ -30,8 +30,8 @@
     font-weight: bold;
 }
 
-.panel-body {
-    height: 600px !important;
+.panelHeight {
+    height: 570px;
 }
 
 .deposit strong {
