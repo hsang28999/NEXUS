@@ -56,6 +56,59 @@ namespace NEXUS.Controllers
 
             return View();
         }
+        public ActionResult Contract()
+        {
+            ViewBag.Title = "Contract";
 
+            return View();
+        }
+        public ActionResult ContractDetail()
+        {
+            ViewBag.Title = "Contract Detail";
+
+            return View();
+        }
+        public ActionResult AdminProduct()
+        {
+            ViewBag.Title = "Product";
+
+            return View();
+        }
+        public ActionResult AdminProductDetail()
+        {
+            ViewBag.Title = "Product Detail";
+
+            return View();
+        }
+        public ActionResult User()
+        {
+            ViewBag.Title = "User";
+
+            return View();
+        }
+        public ActionResult UserDetail()
+        {
+            ViewBag.Title = "User Detail";
+
+            return View();
+        }
+        public ActionResult Shop()
+        {
+            ViewBag.Title = "Shop";
+
+            return View();
+        }
+        public ActionResult ShopDetail()
+        {
+            ViewBag.Title = "Shop Detail";
+
+            return View();
+        }
+        public ActionResult Login()
+        {
+            ViewBag.Title = "Login";
+
+            return View();
+        }
     }
 }

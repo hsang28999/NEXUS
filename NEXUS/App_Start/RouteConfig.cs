@@ -54,6 +54,51 @@ namespace NEXUS
                 url: "history",
                 defaults: new { controller = "Home", action = "History", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "Contract",
+                url: "admin/contract",
+                defaults: new { controller = "Home", action = "Contract", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "ContractDetail",
+                url: "admin/contract-detail/{id}",
+                defaults: new { controller = "Home", action = "ContractDetail", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "User",
+                url: "admin/user",
+                defaults: new { controller = "Home", action = "User", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "UserDetail",
+                url: "admin/user-detail/{id}",
+                defaults: new { controller = "Home", action = "UserDetail", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "AdminProduct",
+                url: "admin/product",
+                defaults: new { controller = "Home", action = "AdminProduct", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "AdminProductDetail",
+                url: "admin/product-detail/{id}",
+                defaults: new { controller = "Home", action = "AdminProductDetail", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Shop",
+                url: "admin/shop",
+                defaults: new { controller = "Home", action = "Shop", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "ShopDetail",
+                url: "admin/shop-detail/{id}",
+                defaults: new { controller = "Home", action = "ShopDetail", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Login",
+                url: "login",
+                defaults: new { controller = "Home", action = "Login", id = UrlParameter.Optional }
+            );
 
             routes.MapRoute(
                 name: "Default",
