@@ -33,7 +33,7 @@ namespace NEXUS.Models
         public string phone_number { get; set; }
         public string email { get; set; }
         public string password { get; set; }
-        public int role_id { get; set; }
+        public int role { get; set; }
         public int store_id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -54,7 +54,6 @@ namespace NEXUS.Models
         public virtual ICollection<order> order1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<report> report { get; set; }
-        public virtual role role { get; set; }
         public virtual store store { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<user_profile> user_profile { get; set; }

@@ -19,5 +19,6 @@ namespace NEXUS.Models
         public Nullable<int> Gender { get; set; }
         public Nullable<int> Birthday { get; set; }
         public string Address { get; set; }
+        public int Role { get; set; }
     }
 }

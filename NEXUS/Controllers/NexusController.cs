@@ -36,7 +36,7 @@ namespace NEXUS.Controllers
                     email = model.Email,
                     password = Encrypt.EncodePassword(model.Password),
                     user_id = 0,
-                    role_id = 1,
+                    role = 1,
                     store_id = 1,
                 };
                 _service.SaveUser(userAcc);
@@ -51,6 +51,7 @@ namespace NEXUS.Controllers
                     email = model.Email,
                     full_name = model.FullName,
                     gender = 1,
+                    role = 1,
                     user_id = UserAccount.user_id,
                     created_date = ConvertDatetime.GetCurrentUnixTimeStamp(),
                 };
@@ -199,7 +200,123 @@ namespace NEXUS.Controllers
             }).ToList();
         }
 
-        
+        [HttpPost]
+        [Route("LoginAdmin")]
+        public UserModel LoginAdmin(UserModel model)
+        {
+            var UserAccount = _service.Login(model);
+            if (Equals(UserAccount, null))
+            {
+                ExceptionContent(HttpStatusCode.InternalServerError, "err_username_or_password_invalid");
+            }
+
+            if (UserAccount.role == 1)
+            {
+                ExceptionContent(HttpStatusCode.InternalServerError, "err_authorization");
+            }
+            var UserProfile = _service.GetUserProfileByPhoneNumber(model.PhoneNumber);
+
+            var token = new TokenModel()
+            {
+                Id = UserAccount.user_id,
+                PhoneNumber = UserAccount.phone_number,
+                Role = UserAccount.role
+            };
+
+            return new UserModel()
+            {
+                Id = UserAccount.user_id,
+                FullName = UserProfile.full_name,
+                PhoneNumber = UserAccount.phone_number,
+                UserCode = "UID_" + UserAccount.user_id.ToString().PadLeft(5, '0'),
+                Token = Encrypt.Base64Encode(JsonConvert.SerializeObject(token))
+            };
+        }
+
+        [HttpPost]
+        [Route("RegisterAdmin")]
+        public UserModel RegisterAdmin(UserModel model)
+        {
+            using (TransactionScope scope = new TransactionScope())
+            {
+                var userAcc = _service.GetUserByPhoneNumber(model.PhoneNumber);
+                if (!Equals(userAcc, null))
+                {
+                    ExceptionContent(HttpStatusCode.Unauthorized, "err_phone_number_already_existed");
+                }
+
+                userAcc = new user()
+                {
+                    phone_number = model.PhoneNumber,
+                    email = model.Email,
+                    password = Encrypt.EncodePassword(model.Password),
+                    user_id = 0,
+                    role = model.Role,
+                    store_id = 1,
+                };
+                _service.SaveUser(userAcc);
+                var UserAccount = _service.GetUserByPhoneNumber(userAcc.phone_number);
+
+                var UserProfile = new user_profile()
+                {
+                    user_profile_id = 0,
+                    address = "",
+                    phone_number = model.PhoneNumber,
+                    birthday = 0,
+                    email = model.Email,
+                    full_name = model.FullName,
+                    gender = 1,
+                    role = model.Role,
+                    user_id = UserAccount.user_id,
+                    created_date = ConvertDatetime.GetCurrentUnixTimeStamp(),
+                };
+
+                _service.SaveUserProfile(UserProfile);
+                UserProfile = _service.GetUserProfileByPhoneNumber(model.PhoneNumber);
+
+
+                var token = new TokenModel()
+                {
+                    Id = UserAccount.user_id,
+                    PhoneNumber = UserAccount.phone_number,
+                    Role = model.Role
+                };
+
+                scope.Complete();
+
+                return new UserModel()
+                {
+                    Id = UserAccount.user_id,
+                    FullName = UserProfile.full_name,
+                    PhoneNumber = UserAccount.phone_number,
+                    UserCode = "UID_" + UserAccount.user_id.ToString().PadLeft(5, '0'),
+                    Token = Encrypt.Base64Encode(JsonConvert.SerializeObject(token))
+                };
+            }
+        }
+
+        [HttpGet]
+        [Route("GetListUser/{page}/{search?}")]
+        public PagingResult<UserModel> GetListUser(int page, string search = "")
+        {
+            var users = _service.GetListUserProfile(search);
+            var userList = users.Skip((page - 1) * 10).Take(10).Select(p => new UserModel()
+            {
+                PhoneNumber = p.phone_number,
+                FullName = p.full_name,
+                Role = p.role,
+                Id = p.user_profile_id,
+                Address = p.address,
+                Gender = p.gender,
+                Birthday = p.birthday,
+                Email = p.email
+            }).ToList();
+            return new PagingResult<UserModel>()
+            {
+                total = users.Count,
+                data = userList
+            };
+        }
 
     }
 }

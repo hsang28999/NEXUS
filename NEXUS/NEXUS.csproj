@@ -247,10 +247,10 @@
     <Compile Include="Models\report.cs">
       <DependentUpon>NexusModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\role.cs">
+    <Compile Include="Models\store.cs">
       <DependentUpon>NexusModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\store.cs">
+    <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>NexusModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Token.cs" />
@@ -334,6 +334,8 @@
     <Content Include="html\productdetail.html" />
     <Content Include="html\shop.html" />
     <Content Include="html\shopdetail.html" />
+    <Content Include="html\user.html" />
+    <Content Include="html\userdetail.html" />
     <Content Include="html\userprofile.html" />
     <Content Include="Models\NexusModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

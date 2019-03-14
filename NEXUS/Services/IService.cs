@@ -29,5 +29,6 @@ namespace NEXUS.Services
         product GetProductById(int id);
         void SaveProduct(product model);
         List<connection> GetListConnect();
+        List<user_profile> GetListUserProfile(string search);
     }
 }

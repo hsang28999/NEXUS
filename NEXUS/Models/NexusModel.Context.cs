@@ -34,8 +34,8 @@ namespace NEXUS.Models
         public virtual DbSet<product> product { get; set; }
         public virtual DbSet<product_store> product_store { get; set; }
         public virtual DbSet<report> report { get; set; }
-        public virtual DbSet<role> role { get; set; }
         public virtual DbSet<store> store { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<user> user { get; set; }
         public virtual DbSet<user_profile> user_profile { get; set; }
     }

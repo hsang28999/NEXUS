@@ -64,6 +64,11 @@ namespace NEXUS.Services
             return UserProfileRepository.FindBy(p => p.phone_number == PhoneNumber).FirstOrDefault();
         }
 
+        public List<user_profile> GetListUserProfile(string search)
+        {
+            return UserProfileRepository.FindBy(p => p.phone_number.ToString().Contains(search) || p.full_name.Contains(search) || p.email.Contains(search)).ToList();
+        }
+
         public void SaveUserProfile(user_profile model)
         {
             UserProfileRepository.Save(model);

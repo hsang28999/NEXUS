@@ -24,6 +24,7 @@ namespace NEXUS.Models
         public Nullable<int> created_date { get; set; }
         public Nullable<decimal> money { get; set; }
         public int user_id { get; set; }
+        public int role { get; set; }
     
         public virtual user user { get; set; }
     }

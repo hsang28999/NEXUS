@@ -116,19 +116,22 @@
           <Property Name="content" Type="nvarchar(max)" Nullable="false" />
           <Property Name="customer_id" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="role">
-          <Key>
-            <PropertyRef Name="role_id" />
-          </Key>
-          <Property Name="role_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="role_name" Type="nvarchar" MaxLength="30" Nullable="false" />
-        </EntityType>
         <EntityType Name="store">
           <Key>
             <PropertyRef Name="store_id" />
           </Key>
           <Property Name="store_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="store_address" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="user">
           <Key>
@@ -138,7 +141,7 @@
           <Property Name="phone_number" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="email" Type="varchar" MaxLength="50" />
           <Property Name="password" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="role_id" Type="int" Nullable="false" />
+          <Property Name="role" Type="int" Nullable="false" />
           <Property Name="store_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="user_profile">
@@ -155,6 +158,7 @@
           <Property Name="created_date" Type="int" />
           <Property Name="money" Type="decimal" Precision="18" Scale="2" />
           <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="role" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK__connectio__conne__2DE6D218">
           <End Role="connection" Type="Self.connection" Multiplicity="1" />
@@ -180,7 +184,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__contract__employ__1AD3FDA4">
+        <Association Name="FK__contract__employ__47A6A41B">
           <End Role="user" Type="Self.user" Multiplicity="1" />
           <End Role="contract" Type="Self.contract" Multiplicity="*" />
           <ReferentialConstraint>
@@ -216,7 +220,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__contract__user_i__19DFD96B">
+        <Association Name="FK__contract__user_i__46B27FE2">
           <End Role="user" Type="Self.user" Multiplicity="1" />
           <End Role="contract" Type="Self.contract" Multiplicity="*" />
           <ReferentialConstraint>
@@ -228,7 +232,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__contract__user_u__1CBC4616">
+        <Association Name="FK__contract__user_u__489AC854">
           <End Role="user" Type="Self.user" Multiplicity="1" />
           <End Role="contract" Type="Self.contract" Multiplicity="*" />
           <ReferentialConstraint>
@@ -240,7 +244,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__coupon__user_cre__151B244E">
+        <Association Name="FK__coupon__user_cre__44CA3770">
           <End Role="user" Type="Self.user" Multiplicity="1" />
           <End Role="coupon" Type="Self.coupon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -252,7 +256,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__coupon__user_use__160F4887">
+        <Association Name="FK__coupon__user_use__45BE5BA9">
           <End Role="user" Type="Self.user" Multiplicity="1" />
           <End Role="coupon" Type="Self.coupon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -264,7 +268,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__employee___emplo__245D67DE">
+        <Association Name="FK__employee___emplo__41EDCAC5">
           <End Role="user" Type="Self.user" Multiplicity="1" />
           <End Role="employee_store" Type="Self.employee_store" Multiplicity="*" />
           <ReferentialConstraint>
@@ -288,7 +292,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__order__customer___29221CFB">
+        <Association Name="FK__order__customer___498EEC8D">
           <End Role="user" Type="Self.user" Multiplicity="1" />
           <End Role="order" Type="Self.order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -300,7 +304,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__order__employee___2A164134">
+        <Association Name="FK__order__employee___4A8310C6">
           <End Role="user" Type="Self.user" Multiplicity="1" />
           <End Role="order" Type="Self.order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -360,7 +364,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__report__customer__2CF2ADDF">
+        <Association Name="FK__report__customer__42E1EEFE">
           <End Role="user" Type="Self.user" Multiplicity="1" />
           <End Role="report" Type="Self.report" Multiplicity="*" />
           <ReferentialConstraint>
@@ -372,19 +376,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__user__role_id__04E4BC85">
-          <End Role="role" Type="Self.role" Multiplicity="1" />
-          <End Role="user" Type="Self.user" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="role">
-              <PropertyRef Name="role_id" />
-            </Principal>
-            <Dependent Role="user">
-              <PropertyRef Name="role_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__user__store_id__05D8E0BE">
+        <Association Name="FK__user__store_id__40F9A68C">
           <End Role="store" Type="Self.store" Multiplicity="1" />
           <End Role="user" Type="Self.user" Multiplicity="*" />
           <ReferentialConstraint>
@@ -396,7 +388,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__user_prof__user___0A9D95DB">
+        <Association Name="FK__user_prof__user___43D61337">
           <End Role="user" Type="Self.user" Multiplicity="1" />
           <End Role="user_profile" Type="Self.user_profile" Multiplicity="*" />
           <ReferentialConstraint>
@@ -418,8 +410,8 @@
           <EntitySet Name="product" EntityType="Self.product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="product_store" EntityType="Self.product_store" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="report" EntityType="Self.report" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="role" EntityType="Self.role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="store" EntityType="Self.store" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="user_profile" EntityType="Self.user_profile" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__connectio__conne__2DE6D218" Association="Self.FK__connectio__conne__2DE6D218">
@@ -430,7 +422,7 @@
             <End Role="coupon" EntitySet="coupon" />
             <End Role="contract" EntitySet="contract" />
           </AssociationSet>
-          <AssociationSet Name="FK__contract__employ__1AD3FDA4" Association="Self.FK__contract__employ__1AD3FDA4">
+          <AssociationSet Name="FK__contract__employ__47A6A41B" Association="Self.FK__contract__employ__47A6A41B">
             <End Role="user" EntitySet="user" />
             <End Role="contract" EntitySet="contract" />
           </AssociationSet>
@@ -442,23 +434,23 @@
             <End Role="store" EntitySet="store" />
             <End Role="contract" EntitySet="contract" />
           </AssociationSet>
-          <AssociationSet Name="FK__contract__user_i__19DFD96B" Association="Self.FK__contract__user_i__19DFD96B">
+          <AssociationSet Name="FK__contract__user_i__46B27FE2" Association="Self.FK__contract__user_i__46B27FE2">
             <End Role="user" EntitySet="user" />
             <End Role="contract" EntitySet="contract" />
           </AssociationSet>
-          <AssociationSet Name="FK__contract__user_u__1CBC4616" Association="Self.FK__contract__user_u__1CBC4616">
+          <AssociationSet Name="FK__contract__user_u__489AC854" Association="Self.FK__contract__user_u__489AC854">
             <End Role="user" EntitySet="user" />
             <End Role="contract" EntitySet="contract" />
           </AssociationSet>
-          <AssociationSet Name="FK__coupon__user_cre__151B244E" Association="Self.FK__coupon__user_cre__151B244E">
+          <AssociationSet Name="FK__coupon__user_cre__44CA3770" Association="Self.FK__coupon__user_cre__44CA3770">
             <End Role="user" EntitySet="user" />
             <End Role="coupon" EntitySet="coupon" />
           </AssociationSet>
-          <AssociationSet Name="FK__coupon__user_use__160F4887" Association="Self.FK__coupon__user_use__160F4887">
+          <AssociationSet Name="FK__coupon__user_use__45BE5BA9" Association="Self.FK__coupon__user_use__45BE5BA9">
             <End Role="user" EntitySet="user" />
             <End Role="coupon" EntitySet="coupon" />
           </AssociationSet>
-          <AssociationSet Name="FK__employee___emplo__245D67DE" Association="Self.FK__employee___emplo__245D67DE">
+          <AssociationSet Name="FK__employee___emplo__41EDCAC5" Association="Self.FK__employee___emplo__41EDCAC5">
             <End Role="user" EntitySet="user" />
             <End Role="employee_store" EntitySet="employee_store" />
           </AssociationSet>
@@ -466,11 +458,11 @@
             <End Role="store" EntitySet="store" />
             <End Role="employee_store" EntitySet="employee_store" />
           </AssociationSet>
-          <AssociationSet Name="FK__order__customer___29221CFB" Association="Self.FK__order__customer___29221CFB">
+          <AssociationSet Name="FK__order__customer___498EEC8D" Association="Self.FK__order__customer___498EEC8D">
             <End Role="user" EntitySet="user" />
             <End Role="order" EntitySet="order" />
           </AssociationSet>
-          <AssociationSet Name="FK__order__employee___2A164134" Association="Self.FK__order__employee___2A164134">
+          <AssociationSet Name="FK__order__employee___4A8310C6" Association="Self.FK__order__employee___4A8310C6">
             <End Role="user" EntitySet="user" />
             <End Role="order" EntitySet="order" />
           </AssociationSet>
@@ -490,19 +482,15 @@
             <End Role="store" EntitySet="store" />
             <End Role="product_store" EntitySet="product_store" />
           </AssociationSet>
-          <AssociationSet Name="FK__report__customer__2CF2ADDF" Association="Self.FK__report__customer__2CF2ADDF">
+          <AssociationSet Name="FK__report__customer__42E1EEFE" Association="Self.FK__report__customer__42E1EEFE">
             <End Role="user" EntitySet="user" />
             <End Role="report" EntitySet="report" />
           </AssociationSet>
-          <AssociationSet Name="FK__user__role_id__04E4BC85" Association="Self.FK__user__role_id__04E4BC85">
-            <End Role="role" EntitySet="role" />
-            <End Role="user" EntitySet="user" />
-          </AssociationSet>
-          <AssociationSet Name="FK__user__store_id__05D8E0BE" Association="Self.FK__user__store_id__05D8E0BE">
+          <AssociationSet Name="FK__user__store_id__40F9A68C" Association="Self.FK__user__store_id__40F9A68C">
             <End Role="store" EntitySet="store" />
             <End Role="user" EntitySet="user" />
           </AssociationSet>
-          <AssociationSet Name="FK__user_prof__user___0A9D95DB" Association="Self.FK__user_prof__user___0A9D95DB">
+          <AssociationSet Name="FK__user_prof__user___43D61337" Association="Self.FK__user_prof__user___43D61337">
             <End Role="user" EntitySet="user" />
             <End Role="user_profile" EntitySet="user_profile" />
           </AssociationSet>
@@ -559,11 +547,11 @@
           <Property Name="user_used" Type="Int32" Nullable="false" />
           <Property Name="coupon_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="coupon" Relationship="Self.FK__contract__coupon__1DB06A4F" FromRole="contract" ToRole="coupon" />
-          <NavigationProperty Name="user" Relationship="Self.FK__contract__employ__1AD3FDA4" FromRole="contract" ToRole="user" />
+          <NavigationProperty Name="user" Relationship="Self.FK__contract__employ__47A6A41B" FromRole="contract" ToRole="user" />
           <NavigationProperty Name="product" Relationship="Self.FK__contract__produc__18EBB532" FromRole="contract" ToRole="product" />
           <NavigationProperty Name="store" Relationship="Self.FK__contract__store___1BC821DD" FromRole="contract" ToRole="store" />
-          <NavigationProperty Name="user1" Relationship="Self.FK__contract__user_i__19DFD96B" FromRole="contract" ToRole="user" />
-          <NavigationProperty Name="user2" Relationship="Self.FK__contract__user_u__1CBC4616" FromRole="contract" ToRole="user" />
+          <NavigationProperty Name="user1" Relationship="Self.FK__contract__user_i__46B27FE2" FromRole="contract" ToRole="user" />
+          <NavigationProperty Name="user2" Relationship="Self.FK__contract__user_u__489AC854" FromRole="contract" ToRole="user" />
         </EntityType>
         <EntityType Name="coupon">
           <Key>
@@ -576,8 +564,8 @@
           <Property Name="exprired_date" Type="Int32" Nullable="false" />
           <Property Name="status" Type="Int32" Nullable="false" />
           <NavigationProperty Name="contract" Relationship="Self.FK__contract__coupon__1DB06A4F" FromRole="coupon" ToRole="contract" />
-          <NavigationProperty Name="user" Relationship="Self.FK__coupon__user_cre__151B244E" FromRole="coupon" ToRole="user" />
-          <NavigationProperty Name="user1" Relationship="Self.FK__coupon__user_use__160F4887" FromRole="coupon" ToRole="user" />
+          <NavigationProperty Name="user" Relationship="Self.FK__coupon__user_cre__44CA3770" FromRole="coupon" ToRole="user" />
+          <NavigationProperty Name="user1" Relationship="Self.FK__coupon__user_use__45BE5BA9" FromRole="coupon" ToRole="user" />
         </EntityType>
         <EntityType Name="employee_store">
           <Key>
@@ -586,7 +574,7 @@
           <Property Name="employee_store_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="employee_id" Type="Int32" Nullable="false" />
           <Property Name="store_id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="user" Relationship="Self.FK__employee___emplo__245D67DE" FromRole="employee_store" ToRole="user" />
+          <NavigationProperty Name="user" Relationship="Self.FK__employee___emplo__41EDCAC5" FromRole="employee_store" ToRole="user" />
           <NavigationProperty Name="store" Relationship="Self.FK__employee___store__25518C17" FromRole="employee_store" ToRole="store" />
         </EntityType>
         <EntityType Name="order">
@@ -601,8 +589,8 @@
           <Property Name="note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="employee_id" Type="Int32" Nullable="false" />
           <Property Name="total_price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <NavigationProperty Name="user" Relationship="Self.FK__order__customer___29221CFB" FromRole="order" ToRole="user" />
-          <NavigationProperty Name="user1" Relationship="Self.FK__order__employee___2A164134" FromRole="order" ToRole="user" />
+          <NavigationProperty Name="user" Relationship="Self.FK__order__customer___498EEC8D" FromRole="order" ToRole="user" />
+          <NavigationProperty Name="user1" Relationship="Self.FK__order__employee___4A8310C6" FromRole="order" ToRole="user" />
           <NavigationProperty Name="product" Relationship="Self.FK__order__product_i__282DF8C2" FromRole="order" ToRole="product" />
         </EntityType>
         <EntityType Name="product">
@@ -645,15 +633,7 @@
           <Property Name="report_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="customer_id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="user" Relationship="Self.FK__report__customer__2CF2ADDF" FromRole="report" ToRole="user" />
-        </EntityType>
-        <EntityType Name="role">
-          <Key>
-            <PropertyRef Name="role_id" />
-          </Key>
-          <Property Name="role_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="role_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="user" Relationship="Self.FK__user__role_id__04E4BC85" FromRole="role" ToRole="user" />
+          <NavigationProperty Name="user" Relationship="Self.FK__report__customer__42E1EEFE" FromRole="report" ToRole="user" />
         </EntityType>
         <EntityType Name="store">
           <Key>
@@ -664,7 +644,17 @@
           <NavigationProperty Name="contract" Relationship="Self.FK__contract__store___1BC821DD" FromRole="store" ToRole="contract" />
           <NavigationProperty Name="employee_store" Relationship="Self.FK__employee___store__25518C17" FromRole="store" ToRole="employee_store" />
           <NavigationProperty Name="product_store" Relationship="Self.FK__product_s__store__2180FB33" FromRole="store" ToRole="product_store" />
-          <NavigationProperty Name="user" Relationship="Self.FK__user__store_id__05D8E0BE" FromRole="store" ToRole="user" />
+          <NavigationProperty Name="user" Relationship="Self.FK__user__store_id__40F9A68C" FromRole="store" ToRole="user" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="user">
           <Key>
@@ -674,20 +664,19 @@
           <Property Name="phone_number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="role_id" Type="Int32" Nullable="false" />
+          <Property Name="role" Type="Int32" Nullable="false" />
           <Property Name="store_id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="contract" Relationship="Self.FK__contract__employ__1AD3FDA4" FromRole="user" ToRole="contract" />
-          <NavigationProperty Name="contract1" Relationship="Self.FK__contract__user_i__19DFD96B" FromRole="user" ToRole="contract" />
-          <NavigationProperty Name="contract2" Relationship="Self.FK__contract__user_u__1CBC4616" FromRole="user" ToRole="contract" />
-          <NavigationProperty Name="coupon" Relationship="Self.FK__coupon__user_cre__151B244E" FromRole="user" ToRole="coupon" />
-          <NavigationProperty Name="coupon1" Relationship="Self.FK__coupon__user_use__160F4887" FromRole="user" ToRole="coupon" />
-          <NavigationProperty Name="employee_store" Relationship="Self.FK__employee___emplo__245D67DE" FromRole="user" ToRole="employee_store" />
-          <NavigationProperty Name="order" Relationship="Self.FK__order__customer___29221CFB" FromRole="user" ToRole="order" />
-          <NavigationProperty Name="order1" Relationship="Self.FK__order__employee___2A164134" FromRole="user" ToRole="order" />
-          <NavigationProperty Name="report" Relationship="Self.FK__report__customer__2CF2ADDF" FromRole="user" ToRole="report" />
-          <NavigationProperty Name="role" Relationship="Self.FK__user__role_id__04E4BC85" FromRole="user" ToRole="role" />
-          <NavigationProperty Name="store" Relationship="Self.FK__user__store_id__05D8E0BE" FromRole="user" ToRole="store" />
-          <NavigationProperty Name="user_profile" Relationship="Self.FK__user_prof__user___0A9D95DB" FromRole="user" ToRole="user_profile" />
+          <NavigationProperty Name="contract" Relationship="Self.FK__contract__employ__47A6A41B" FromRole="user" ToRole="contract" />
+          <NavigationProperty Name="contract1" Relationship="Self.FK__contract__user_i__46B27FE2" FromRole="user" ToRole="contract" />
+          <NavigationProperty Name="contract2" Relationship="Self.FK__contract__user_u__489AC854" FromRole="user" ToRole="contract" />
+          <NavigationProperty Name="coupon" Relationship="Self.FK__coupon__user_cre__44CA3770" FromRole="user" ToRole="coupon" />
+          <NavigationProperty Name="coupon1" Relationship="Self.FK__coupon__user_use__45BE5BA9" FromRole="user" ToRole="coupon" />
+          <NavigationProperty Name="employee_store" Relationship="Self.FK__employee___emplo__41EDCAC5" FromRole="user" ToRole="employee_store" />
+          <NavigationProperty Name="order" Relationship="Self.FK__order__customer___498EEC8D" FromRole="user" ToRole="order" />
+          <NavigationProperty Name="order1" Relationship="Self.FK__order__employee___4A8310C6" FromRole="user" ToRole="order" />
+          <NavigationProperty Name="report" Relationship="Self.FK__report__customer__42E1EEFE" FromRole="user" ToRole="report" />
+          <NavigationProperty Name="store" Relationship="Self.FK__user__store_id__40F9A68C" FromRole="user" ToRole="store" />
+          <NavigationProperty Name="user_profile" Relationship="Self.FK__user_prof__user___43D61337" FromRole="user" ToRole="user_profile" />
         </EntityType>
         <EntityType Name="user_profile">
           <Key>
@@ -703,7 +692,8 @@
           <Property Name="created_date" Type="Int32" />
           <Property Name="money" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="user_id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="user" Relationship="Self.FK__user_prof__user___0A9D95DB" FromRole="user_profile" ToRole="user" />
+          <Property Name="role" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="Self.FK__user_prof__user___43D61337" FromRole="user_profile" ToRole="user" />
         </EntityType>
         <Association Name="FK__connectio__conne__2DE6D218">
           <End Role="connection" Type="Self.connection" Multiplicity="1" />
@@ -741,7 +731,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__contract__employ__1AD3FDA4">
+        <Association Name="FK__contract__employ__47A6A41B">
           <End Role="user" Type="Self.user" Multiplicity="1" />
           <End Role="contract" Type="Self.contract" Multiplicity="*" />
           <ReferentialConstraint>
@@ -777,7 +767,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__contract__user_i__19DFD96B">
+        <Association Name="FK__contract__user_i__46B27FE2">
           <End Role="user" Type="Self.user" Multiplicity="1" />
           <End Role="contract" Type="Self.contract" Multiplicity="*" />
           <ReferentialConstraint>
@@ -789,7 +779,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__contract__user_u__1CBC4616">
+        <Association Name="FK__contract__user_u__489AC854">
           <End Role="user" Type="Self.user" Multiplicity="1" />
           <End Role="contract" Type="Self.contract" Multiplicity="*" />
           <ReferentialConstraint>
@@ -801,7 +791,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__coupon__user_cre__151B244E">
+        <Association Name="FK__coupon__user_cre__44CA3770">
           <End Role="user" Type="Self.user" Multiplicity="1" />
           <End Role="coupon" Type="Self.coupon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -813,7 +803,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__coupon__user_use__160F4887">
+        <Association Name="FK__coupon__user_use__45BE5BA9">
           <End Role="user" Type="Self.user" Multiplicity="1" />
           <End Role="coupon" Type="Self.coupon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -825,7 +815,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__employee___emplo__245D67DE">
+        <Association Name="FK__employee___emplo__41EDCAC5">
           <End Role="user" Type="Self.user" Multiplicity="1" />
           <End Role="employee_store" Type="Self.employee_store" Multiplicity="*" />
           <ReferentialConstraint>
@@ -849,7 +839,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__order__customer___29221CFB">
+        <Association Name="FK__order__customer___498EEC8D">
           <End Role="user" Type="Self.user" Multiplicity="1" />
           <End Role="order" Type="Self.order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -861,7 +851,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__order__employee___2A164134">
+        <Association Name="FK__order__employee___4A8310C6">
           <End Role="user" Type="Self.user" Multiplicity="1" />
           <End Role="order" Type="Self.order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -909,7 +899,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__report__customer__2CF2ADDF">
+        <Association Name="FK__report__customer__42E1EEFE">
           <End Role="user" Type="Self.user" Multiplicity="1" />
           <End Role="report" Type="Self.report" Multiplicity="*" />
           <ReferentialConstraint>
@@ -921,19 +911,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__user__role_id__04E4BC85">
-          <End Role="role" Type="Self.role" Multiplicity="1" />
-          <End Role="user" Type="Self.user" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="role">
-              <PropertyRef Name="role_id" />
-            </Principal>
-            <Dependent Role="user">
-              <PropertyRef Name="role_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__user__store_id__05D8E0BE">
+        <Association Name="FK__user__store_id__40F9A68C">
           <End Role="store" Type="Self.store" Multiplicity="1" />
           <End Role="user" Type="Self.user" Multiplicity="*" />
           <ReferentialConstraint>
@@ -945,7 +923,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__user_prof__user___0A9D95DB">
+        <Association Name="FK__user_prof__user___43D61337">
           <End Role="user" Type="Self.user" Multiplicity="1" />
           <End Role="user_profile" Type="Self.user_profile" Multiplicity="*" />
           <ReferentialConstraint>
@@ -967,8 +945,8 @@
           <EntitySet Name="product" EntityType="Self.product" />
           <EntitySet Name="product_store" EntityType="Self.product_store" />
           <EntitySet Name="report" EntityType="Self.report" />
-          <EntitySet Name="role" EntityType="Self.role" />
           <EntitySet Name="store" EntityType="Self.store" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="user" EntityType="Self.user" />
           <EntitySet Name="user_profile" EntityType="Self.user_profile" />
           <AssociationSet Name="FK__connectio__conne__2DE6D218" Association="Self.FK__connectio__conne__2DE6D218">
@@ -983,7 +961,7 @@
             <End Role="coupon" EntitySet="coupon" />
             <End Role="contract" EntitySet="contract" />
           </AssociationSet>
-          <AssociationSet Name="FK__contract__employ__1AD3FDA4" Association="Self.FK__contract__employ__1AD3FDA4">
+          <AssociationSet Name="FK__contract__employ__47A6A41B" Association="Self.FK__contract__employ__47A6A41B">
             <End Role="user" EntitySet="user" />
             <End Role="contract" EntitySet="contract" />
           </AssociationSet>
@@ -995,23 +973,23 @@
             <End Role="store" EntitySet="store" />
             <End Role="contract" EntitySet="contract" />
           </AssociationSet>
-          <AssociationSet Name="FK__contract__user_i__19DFD96B" Association="Self.FK__contract__user_i__19DFD96B">
+          <AssociationSet Name="FK__contract__user_i__46B27FE2" Association="Self.FK__contract__user_i__46B27FE2">
             <End Role="user" EntitySet="user" />
             <End Role="contract" EntitySet="contract" />
           </AssociationSet>
-          <AssociationSet Name="FK__contract__user_u__1CBC4616" Association="Self.FK__contract__user_u__1CBC4616">
+          <AssociationSet Name="FK__contract__user_u__489AC854" Association="Self.FK__contract__user_u__489AC854">
             <End Role="user" EntitySet="user" />
             <End Role="contract" EntitySet="contract" />
           </AssociationSet>
-          <AssociationSet Name="FK__coupon__user_cre__151B244E" Association="Self.FK__coupon__user_cre__151B244E">
+          <AssociationSet Name="FK__coupon__user_cre__44CA3770" Association="Self.FK__coupon__user_cre__44CA3770">
             <End Role="user" EntitySet="user" />
             <End Role="coupon" EntitySet="coupon" />
           </AssociationSet>
-          <AssociationSet Name="FK__coupon__user_use__160F4887" Association="Self.FK__coupon__user_use__160F4887">
+          <AssociationSet Name="FK__coupon__user_use__45BE5BA9" Association="Self.FK__coupon__user_use__45BE5BA9">
             <End Role="user" EntitySet="user" />
             <End Role="coupon" EntitySet="coupon" />
           </AssociationSet>
-          <AssociationSet Name="FK__employee___emplo__245D67DE" Association="Self.FK__employee___emplo__245D67DE">
+          <AssociationSet Name="FK__employee___emplo__41EDCAC5" Association="Self.FK__employee___emplo__41EDCAC5">
             <End Role="user" EntitySet="user" />
             <End Role="employee_store" EntitySet="employee_store" />
           </AssociationSet>
@@ -1019,11 +997,11 @@
             <End Role="store" EntitySet="store" />
             <End Role="employee_store" EntitySet="employee_store" />
           </AssociationSet>
-          <AssociationSet Name="FK__order__customer___29221CFB" Association="Self.FK__order__customer___29221CFB">
+          <AssociationSet Name="FK__order__customer___498EEC8D" Association="Self.FK__order__customer___498EEC8D">
             <End Role="user" EntitySet="user" />
             <End Role="order" EntitySet="order" />
           </AssociationSet>
-          <AssociationSet Name="FK__order__employee___2A164134" Association="Self.FK__order__employee___2A164134">
+          <AssociationSet Name="FK__order__employee___4A8310C6" Association="Self.FK__order__employee___4A8310C6">
             <End Role="user" EntitySet="user" />
             <End Role="order" EntitySet="order" />
           </AssociationSet>
@@ -1039,19 +1017,15 @@
             <End Role="store" EntitySet="store" />
             <End Role="product_store" EntitySet="product_store" />
           </AssociationSet>
-          <AssociationSet Name="FK__report__customer__2CF2ADDF" Association="Self.FK__report__customer__2CF2ADDF">
+          <AssociationSet Name="FK__report__customer__42E1EEFE" Association="Self.FK__report__customer__42E1EEFE">
             <End Role="user" EntitySet="user" />
             <End Role="report" EntitySet="report" />
           </AssociationSet>
-          <AssociationSet Name="FK__user__role_id__04E4BC85" Association="Self.FK__user__role_id__04E4BC85">
-            <End Role="role" EntitySet="role" />
-            <End Role="user" EntitySet="user" />
-          </AssociationSet>
-          <AssociationSet Name="FK__user__store_id__05D8E0BE" Association="Self.FK__user__store_id__05D8E0BE">
+          <AssociationSet Name="FK__user__store_id__40F9A68C" Association="Self.FK__user__store_id__40F9A68C">
             <End Role="store" EntitySet="store" />
             <End Role="user" EntitySet="user" />
           </AssociationSet>
-          <AssociationSet Name="FK__user_prof__user___0A9D95DB" Association="Self.FK__user_prof__user___0A9D95DB">
+          <AssociationSet Name="FK__user_prof__user___43D61337" Association="Self.FK__user_prof__user___43D61337">
             <End Role="user" EntitySet="user" />
             <End Role="user_profile" EntitySet="user_profile" />
           </AssociationSet>
@@ -1182,19 +1156,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="role">
-            <EntityTypeMapping TypeName="NexusDBModel.role">
-              <MappingFragment StoreEntitySet="role">
-                <ScalarProperty Name="role_id" ColumnName="role_id" />
-                <ScalarProperty Name="role_name" ColumnName="role_name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="store">
             <EntityTypeMapping TypeName="NexusDBModel.store">
               <MappingFragment StoreEntitySet="store">
                 <ScalarProperty Name="store_id" ColumnName="store_id" />
                 <ScalarProperty Name="store_address" ColumnName="store_address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="NexusDBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1205,7 +1182,7 @@
                 <ScalarProperty Name="phone_number" ColumnName="phone_number" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="role" ColumnName="role" />
                 <ScalarProperty Name="store_id" ColumnName="store_id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1223,6 +1200,7 @@
                 <ScalarProperty Name="created_date" ColumnName="created_date" />
                 <ScalarProperty Name="money" ColumnName="money" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="role" ColumnName="role" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
