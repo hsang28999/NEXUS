@@ -325,6 +325,7 @@
     <Content Include="html\adminproductdetail.html" />
     <Content Include="html\contract.html" />
     <Content Include="html\contractdetail.html" />
+    <Content Include="html\dashboard.html" />
     <Content Include="html\history.html" />
     <Content Include="html\home.html" />
     <Content Include="html\index.html" />
@@ -423,6 +424,7 @@
     <Content Include="Views\Home\Shop.cshtml" />
     <Content Include="Views\Home\ShopDetail.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\Dashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

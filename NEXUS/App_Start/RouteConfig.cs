@@ -99,6 +99,11 @@ namespace NEXUS
                 url: "login",
                 defaults: new { controller = "Home", action = "Login", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "Dashboard",
+                url: "admin",
+                defaults: new { controller = "Home", action = "Dashboard", id = UrlParameter.Optional }
+            );
 
             routes.MapRoute(
                 name: "Default",

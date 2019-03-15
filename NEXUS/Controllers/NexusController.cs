@@ -75,7 +75,8 @@ namespace NEXUS.Controllers
                     FullName = UserProfile.full_name,
                     PhoneNumber = UserAccount.phone_number,
                     UserCode = "UID_" + UserAccount.user_id.ToString().PadLeft(5, '0'),
-                    Token = Encrypt.Base64Encode(JsonConvert.SerializeObject(token))
+                    Token = Encrypt.Base64Encode(JsonConvert.SerializeObject(token)),
+                   Role = UserProfile.role
                 };
             }
         }

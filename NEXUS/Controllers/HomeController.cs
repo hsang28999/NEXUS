@@ -110,5 +110,11 @@ namespace NEXUS.Controllers
 
             return View();
         }
+        public ActionResult Dashboard()
+        {
+            ViewBag.Title = "Dashboard";
+
+            return View();
+        }
     }
 }

@@ -62,48 +62,53 @@
             })
         .state('admin',
             {
-                url: "/admin/",
+                url: "/admin",
                 abstract: true,
                 templateUrl: "html/admin.html"
-            })
+        })
+            .state('admin.dashboard',
+                {
+                    url: "",
+                    templateUrl: "html/dashboard.html"
+                })
         .state('admin.contract',
             {
-                url: "contract",
+                url: "/contract",
                 templateUrl: "html/contract.html"
             })
         .state('admin.contractdetail',
             {
-                url: "contract-detail/{id}",
+                url: "/contract-detail/{id}",
                 templateUrl: "html/contractdetail.html"
             })
         .state('admin.product',
             {
-                url: "product",
+                url: "/product",
                 templateUrl: "html/adminproduct.html"
             })
         .state('admin.productdetail',
             {
-                url: "product-detail/{id}",
+                url: "/product-detail/{id}",
                 templateUrl: "html/adminproductdetail.html"
             })
         .state('admin.user',
             {
-                url: "user",
+                url: "/user",
                 templateUrl: "html/user.html"
             })
         .state('admin.userdetail',
             {
-                url: "user-detail/{id}",
+                url: "/user-detail/{id}",
                 templateUrl: "html/userdetail.html"
             })
         .state('admin.shop',
             {
-                url: "shop",
+                url: "/shop",
                 templateUrl: "html/shop.html"
             })
         .state('admin.shopdetail',
             {
-                url: "shop-detail/{id}",
+                url: "/shop-detail/{id}",
                 templateUrl: "html/shopdetail.html"
             })
         ;
