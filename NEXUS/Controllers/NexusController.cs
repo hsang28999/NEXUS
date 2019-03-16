@@ -151,7 +151,6 @@ namespace NEXUS.Controllers
             User.email = model.Email;
             User.full_name = model.FullName;
             User.gender = model.Gender;
-            User.money = model.Money;
             User.address = model.Address;
             
             _service.SaveUserProfile(User);
@@ -310,7 +309,7 @@ namespace NEXUS.Controllers
                 PhoneNumber = p.phone_number,
                 FullName = p.full_name,
                 Role = p.role,
-                Id = p.user_profile_id,
+                Id = p.user_id,
                 Address = p.address,
                 Gender = p.gender,
                 Birthday = p.birthday,
