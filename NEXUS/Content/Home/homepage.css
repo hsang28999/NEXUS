@@ -1,7 +1,4 @@
-﻿.ng-scope {
-    background-color: #fff !important;
-    height: 100%;
-}
+﻿
 
 .header-homepage {
     background-color: #fff;
@@ -100,11 +97,6 @@
 .formm span:hover {
     cursor: pointer;
 }
-
-/*.modal-content {
-    overflow-x: hidden;
-    overflow-y: hidden;
-}*/
 
 .aboutus {
     margin-left: 30px;

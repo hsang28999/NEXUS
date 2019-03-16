@@ -18,10 +18,6 @@ function MainCtrl($scope, $rootScope, $stateParams, $location, $timeout, xhrServ
             $scope.showBtnLog = true;
             $scope.showInfoLog = false;
         }
-
-        if (user.Role != 1) {
-            window.location.href = "/admin";
-        } 
     }
 
     $scope.test = function() {
@@ -86,13 +82,8 @@ function MainCtrl($scope, $rootScope, $stateParams, $location, $timeout, xhrServ
             console.log(data);
             localStorage.setItem('user', JSON.stringify(data.data));
             toastr.success('Welcome' + ' ' + data.data.FullName, 'Login Success');
-            setTimeout(() => {
-                if (data.data.Role != 1) {
-                    window.location.href = "/admin";  
-                }
-                else {
-                    window.location.href = "/";  
-                }
+            setTimeout(() => {   
+                location.reload();
             }, 2000);
         }, function (error) {
             
