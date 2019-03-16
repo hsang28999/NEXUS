@@ -62,9 +62,9 @@
                         <p>Nếu đã có tài khoản vui lòng <span ng-click="displayLogin = !displayLogin" id="modaldis-res">Đăng Nhập</span> !</p>
                     </div>
                     <div class="formm" ng-hide="!displayLogin">
-                        <form name="LoguserForm" ng-submit="login()" class="form form-log" novalidate>
+                        <form autocomplete="off" name="LoguserForm" ng-submit="login()" class="form form-log" novalidate>
                             <div class="form-group" ng-class="{ 'has-error' : LoguserForm.name.$invalid && !LoguserForm.name.$pristine }">
-                                <input class="form-control" type="text" name="nlogphone" value="" placeholder="Số Điện Thoại" ng-model='logphone' required />
+                                <input class="form-control" type="text" name="nlogphone" value="" placeholder="Số Điện Thoại" ng-model='logphone' required/>
                                 <span ng-show="LoguserForm.nlogphone.$invalid && !LoguserForm.nlogphone.$pristine" class="alert alert-danger help-block">Enter Number Phone</span>
                                 <input class="form-control" type="password" name="nlogpass" value="" placeholder="Mật khẩu" ng-model='logpass' required />
                                 <span ng-show="LoguserForm.nlogpass.$invalid && !LoguserForm.nlogpass.$pristine" class="alert alert-danger help-block">Enter Password</span>
