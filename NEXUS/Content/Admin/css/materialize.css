@@ -2821,7 +2821,7 @@ a {
     box-shadow: none !important;
 }
 
-.z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-floating, .dropdown-content, .collapsible, .side-nav {
+.z-depth-1, nav, .card-panel, .card, .btn, .btn-large, .btn-floating, .dropdown-content, .collapsible, .side-nav {
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
@@ -5223,7 +5223,7 @@ small {
             display: block;
         }
 
-#toast-container {
+/*#toast-container {
     display: block;
     position: fixed;
     z-index: 10000;
@@ -5290,7 +5290,7 @@ small {
         width: 100%;
         border-radius: 0;
     }
-}
+}*/
 
 .tabs {
     position: relative;
@@ -5485,12 +5485,12 @@ small {
         line-height: inherit;
     }
 
-    .btn:focus, .btn-large:focus,
+    ..input-field btn:focus, .btn-large:focus,
     .btn-floating:focus {
         background-color: #ff0d5f;
     }
 
-.btn, .btn-large {
+.input-field .btn, .btn-large {
     text-decoration: none;
     color: #fff;
     background-color: #ff4081;
@@ -5500,11 +5500,11 @@ small {
     cursor: pointer;
 }
 
-    .btn:hover, .btn-large:hover {
+    .input-field .btn:hover, .btn-large:hover {
         background-color: #ff5a92;
     }
 
-.btn-floating {
+.input-field .btn-floating {
     display: inline-block;
     color: #fff;
     position: relative;
@@ -5885,7 +5885,7 @@ button.btn-floating {
     z-index: -1;
 }
 
-.modal {
+/*.modal {
     display: none;
     position: fixed;
     left: 0;
@@ -5898,9 +5898,9 @@ button.btn-floating {
     overflow-y: auto;
     border-radius: 2px;
     will-change: top, opacity;
-}
+}*/
 
-@media only screen and (max-width: 992px) {
+/*@media only screen and (max-width: 992px) {
     .modal {
         width: 80%;
     }
@@ -5972,7 +5972,7 @@ button.btn-floating {
     max-height: 45%;
     border-radius: 0;
     will-change: bottom, opacity;
-}
+}*/
 
 .collapsible {
     border-top: 1px solid #ddd;
@@ -6198,7 +6198,7 @@ select:focus {
     outline: 1px solid white;
 }
 
-button:focus {
+.input-field .btn:focus {
     outline: none;
     background-color: #ff548e;
 }
@@ -7135,9 +7135,9 @@ input[type=checkbox]:not(:disabled).tabbed:focus ~ .lever::before {
 
 /* Select Field
    ========================================================================== */
-select {
+/*select {
     display: none;
-}
+}*/
 
     select.browser-default {
         display: block;
@@ -7152,7 +7152,7 @@ select {
     height: 3rem;
 }
 
-.input-field select {
+/*.input-field select {
     display: block;
     position: absolute;
     width: 0;
@@ -7161,7 +7161,7 @@ select {
     top: 0;
     left: 0;
     opacity: 0;
-}
+}*/
 
 .select-label {
     position: absolute;
