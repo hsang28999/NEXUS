@@ -1,0 +1,22 @@
+﻿.footer-homepage {
+    color: #909090;
+    height: auto;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.ft-text {
+    display: inline-block;
+    padding: 10px;
+}
+
+.ft-logo {
+    padding: 4px 20px 0 0;
+    float: right;
+    display: inline-block;
+}
+
+.ft-logo img {
+    width: 50px;
+}

@@ -1,0 +1,54 @@
+﻿<div class="mainproduct" ng-controller="ProductCtrl" ng-init="loadProduct()">
+    <div class="container-fluid">
+        <div class="row posts">
+            <div class="col-md-4" ng-repeat="dataP in dataProduct">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center title">{{dataP.Name}}</div>
+                    <div class="panel-body">
+                        <div class="panelHeight">
+                            <div class="svc" ng-repeat="product in dataP.ConnectionGroups">
+                                <div class="titlepost">
+                                    {{product.Name}}
+                                </div>
+                                <div class="post" ng-repeat="products in product.Products">
+                                    <span>+ {{products.ProductName}} ({{products.Description}})</span>
+                                    <span ng-if="products.PpmLocal == 0.55">The call charges are like this : 55cents / minute</span>
+                                    <span ng-if="products.PpmLocal == 0.75 && products.PpmMobile == 0">The call charges are like this : 75cents / minute</span>
+                                    <span ng-if="products.PpmLocal == 0.70">
+                                        <span>The call charges are like this :</span>
+                                        <span>Local : 70cents / minute</span>
+                                        <span>STD : 2.25$ / minute</span>
+                                        <span>Messaging For Mobiles : 1.00$ / Minute</span>
+                                    </span>
+                                    <span ng-if="products.PpmLocal == 0.60 && products.PpmMobile == 2">
+                                        <span>The call charges are like this :</span>
+                                        <span>Local : 60cents / minute</span>
+                                        <span>STD : 2.00$ / minute</span>
+                                        <span>Messaging For Mobiles : 1.15$ / Minute</span>
+                                    </span>
+                                    <span ng-if="products.PpmLocal == 0.60 && products.PpmMobile == 1.75">
+                                        <span>The call charges are like this :</span>
+                                        <span>Local : 60cents / minute</span>
+                                        <span>STD : 1.75$ / minute</span>
+                                        <span>Messaging For Mobiles : 1.25$ / Minute</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="panel-footer">
+                        <div class="text-center deposit">
+                            Security Deposit: <strong>{{dataP.SecurityDeposit}}$</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="note">
+                <i class="fa fa-exclamation-triangle"></i> Security Deposit: It is the charge that will be refunded back to the customer
+                during the time of withdrawal or cancellation. In general it will be charged as
+                follows for the type of the connection
+            </div>
+        </div>
+    </div>
+</div>
