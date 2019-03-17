@@ -26,9 +26,14 @@ namespace NEXUS.Services
         //List<ConnectionGroupModel> GetListConnectionGroupsByConnectionId(int connection_id);
         List<product> GetListProductsByConnectionGroupId(int connection_group_id);
         List<product> GetListProducts(string search);
+        List<connection_group> GetListConnectionGroup();
         product GetProductById(int id);
         void SaveProduct(product model);
         List<connection> GetListConnect();
         List<user_profile> GetListUserProfile(string search);
+        employee_store GetListStoreByEmployeeId(int id);
+        List<store> GetListStore();
+        void SaveStore(store model);
+        void SaveEmployeeStore(employee_store model);
     }
 }

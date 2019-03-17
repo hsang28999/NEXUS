@@ -103,6 +103,10 @@ namespace NEXUS.Services
         //    ;
         //    return connection_group_model_list;
         //}
+        public List<connection_group> GetListConnectionGroup()
+        {
+            return ConnectionGroupRepository.GetAll().ToList();
+        }
         public employee_store GetListStoreByEmployeeId(int id)
         {
             return EmployeeStoreRepository.FindBy(p => p.employee_id == id).Include(p => p.user.user_profile).Include(p => p.store).FirstOrDefault();

@@ -301,7 +301,7 @@ namespace NEXUS.Controllers
 
         [HttpGet]
         [Route("GetListUser/{page}/{search?}")]
-        public PagingResult<UserModel> GetListUser(int page, string search = "")
+        public PagingResult<UserModel> GetListUser(int page, string search = null)
         {
             var users = _service.GetListUserProfile(search);
             var userList = users.Skip((page - 1) * 10).Take(10).Select(p => new UserModel()
@@ -322,7 +322,46 @@ namespace NEXUS.Controllers
             };
         }
 
-        
+        [HttpGet]
+        [Route("GetListProductAdmin/{page}/{search?}")]
+        public PagingResult<ProductModel> GetListProductAdmin(int page,string search = null)
+        {
+            var products = _service.GetListProducts(search);
+            var listProduct = products.Skip((page - 1) * 10).Take(10).Select(p => new ProductModel()
+            {
+                ConnectionGroupId = p.connection_group_id,
+                TimeType = p.time_type,
+                PpmMobile = p.ppm_mobile,
+                PpmStd = p.ppm_std,
+                TimeUsed = p.time_used,
+                Type = p.type,
+                Description = p.description,
+                MonthAvailable = p.month_available,
+                PpmLocal = p.ppm_local,
+                Price = p.price,
+                ProductName = p.product_name,
+                ProductId = p.product_id,
+                Status = p.status
+            }).ToList();
+            return new PagingResult<ProductModel>()
+            {
+                total = listProduct.Count,
+                data = listProduct
+            };
+        }
+
+        [HttpGet]
+        [Route("GetListConnectionGroup")]
+        public List<ConnectionGroupModel> GetListConnectionGroup()
+        {
+            var connectionGroups = _service.GetListConnectionGroup();
+            return connectionGroups.Select(p => new ConnectionGroupModel()
+            {
+                Name = p.connection_group_name,
+                Bandwidth = p.bandwidth,
+                ConnectionName = p.connection.connection_name
+            }).ToList();
+        }
 
     }
 }

@@ -10,5 +10,6 @@ namespace NEXUS.Models
         public List<ProductModel> Products { get; set; }
         public Nullable<int> Bandwidth { get; set; }
         public string Name { get; set; }
+        public string ConnectionName { get; set; }
     }
 }
