@@ -127,6 +127,11 @@ namespace NEXUS.Services
             return ConnectionRepository.GetAll().ToList();
         }
 
+        public store GetStoreById(int id)
+        {
+            return StoreRepository.FindBy(p => p.store_id == id).FirstOrDefault();
+        }
+
         public List<store> GetListStore()
         {
             return StoreRepository.FindBy(p => p.status == 1).ToList();

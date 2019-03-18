@@ -323,6 +323,44 @@ namespace NEXUS.Controllers
         }
 
         [HttpGet]
+        [Route("GetListStore")]
+        public List<StoreModel> GetListStore()
+        {
+            return _service.GetListStore().Select(p => new StoreModel()
+            {
+                Name = p.name,
+                Address = p.store_address,
+                Status = p.status,
+                StoreId = p.store_id
+            }).ToList();
+        }
+
+        [HttpPost]
+        [Route("CreateStore")]
+        public void CreateStore(StoreModel model)
+        {
+            var Store = new store()
+            {
+                store_id = 0,
+                name = model.Name,
+                store_address = model.Address,
+                status = 1
+            };
+            _service.SaveStore(Store);
+        }
+
+        [HttpPost]
+        [Route("SaveStore/{id}")]
+        public void SaveStore(int id, StoreModel model)
+        {
+            var Store = _service.GetStoreById(id);
+            Store.name = model.Name;
+            Store.store_address = model.Address;
+            Store.status = model.Status;
+            _service.SaveStore(Store);
+        }
+
+        [HttpGet]
         [Route("GetListEmployee/{page}/{search?}")]
         public PagingResult<UserModel> GetListEmployee(int page, string search = null)
         {
