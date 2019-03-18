@@ -422,26 +422,56 @@ namespace NEXUS.Controllers
 
         }
 
+        [HttpGet]
+        [Route("GetStoreDetail/{id}")]
+        public StoreModel GetStoreDetail(int id)
+        {
+            var Store = _service.GetStoreById(id);
+            
+            return new StoreModel()
+            {
+                Name = Store.name,
+                Address = Store.store_address,
+                StoreId = Store.store_id,
+                Status = Store.status,
+                ListUser = _service.GetListUserByStoreId(id).Select(p => new UserModel()
+                {
+                    PhoneNumber = p.user.user_profile.FirstOrDefault().phone_number,
+                    FullName = p.user.user_profile.FirstOrDefault().full_name,
+                    Address = p.user.user_profile.FirstOrDefault().address,
+                    Id = p.user.user_profile.FirstOrDefault().user_id,
+                    Role = p.user.user_profile.FirstOrDefault().role,
+                    Birthday = p.user.user_profile.FirstOrDefault().birthday,
+                    Gender = p.user.user_profile.FirstOrDefault().gender,
+                    Email = p.user.user_profile.FirstOrDefault().email
+                }).ToList()
+            };
+        }
+
         [HttpPost]
         [Route("SaveEmployeeDetail/{id}")]
         public void SaveEmployeeDetail(int id,EmployeeModel model)
         {
             using (TransactionScope scope = new TransactionScope())
             {
-                var EmployeeStore = _service.GetEmployeeStoreById(model.Id,model.StoreId);
-                var EmployeeProfile = _service.GetUserProfileById(model.Id);
-                var Employee = _service.GetUserById(model.Id);
-                if (!Equals(EmployeeStore, null))
+                var EmployeeStore = _service.GetEmployeeStoreById(id, model.StoreId);
+                var EmployeeProfile = _service.GetUserProfileById(id);
+                var Employee = _service.GetUserById(id);
+                if (Equals(Employee, null))
                 {
                     ExceptionContent(HttpStatusCode.InternalServerError, "employee_or_store_not_exist");
                 }
 
-                if (!Equals(EmployeeStore,null))
+                if (Equals(EmployeeStore,null))
                 {
-                    EmployeeStore.store_id = model.StoreId;
-                    _service.SaveEmployeeStore(EmployeeStore);
+                    EmployeeStore = new employee_store()
+                    {
+                        employee_id = id,
+                        employee_store_id = 0
+                    };
                 }
-                
+                EmployeeStore.store_id = model.StoreId;
+                _service.SaveEmployeeStore(EmployeeStore);
 
                 EmployeeProfile.full_name = model.FullName;
                 EmployeeProfile.address = model.Address;

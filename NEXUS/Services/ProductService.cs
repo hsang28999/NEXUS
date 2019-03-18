@@ -126,6 +126,10 @@ namespace NEXUS.Services
         {
             return ConnectionRepository.GetAll().ToList();
         }
+        public List<employee_store> GetListUserByStoreId(int id)
+        {
+            return EmployeeStoreRepository.FindBy(p => p.store_id == id).Include(p => p.user.user_profile).ToList();
+        }
 
         public store GetStoreByName(string name)
         {

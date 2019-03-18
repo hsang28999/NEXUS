@@ -39,5 +39,6 @@ namespace NEXUS.Services
         List<user_profile> GetListEmployee(string search);
         store GetStoreById(int id);
         store GetStoreByName(string name);
+        List<employee_store> GetListUserByStoreId(int id);
     }
 }

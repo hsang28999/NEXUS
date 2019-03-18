@@ -72,6 +72,8 @@ namespace NEXUS.Services
             }
             return UserProfileRepository.FindBy(p => p.role == 1 && (p.phone_number.ToString().Contains(search) || p.full_name.Contains(search) || p.email.Contains(search))).ToList();
         }
+
+
         public List<user_profile> GetListEmployee(string search)
         {
             if (Equals(search, null))
