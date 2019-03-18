@@ -74,13 +74,13 @@
         })
         .state('admin.employee',
                 {
-                    url: "/employeee?page&search",
+                    url: "/employee?page&search",
                     templateUrl: "html/employee.html"
         })
             .state('admin.employeedetail',
                 {
-                    url: "/employeee-detail/{id}",
-                    templateUrl: "html/employee.html"
+                    url: "/employee-detail/{id}",
+                    templateUrl: "html/employeedetail.html"
                 })
             .state('admin.dashboard',
                 {

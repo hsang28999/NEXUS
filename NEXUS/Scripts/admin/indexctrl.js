@@ -3,9 +3,9 @@
     $scope.loadIndex = function () {
         $scope.userI = user.FullName; 
 
-        if (user.Role == 1) {
-            window.location.href = "/";
-        } 
+        //if (user.Role == 1) {
+        //    window.location.href = "/";
+        //} 
     }
 
     $scope.logOut = function () {
