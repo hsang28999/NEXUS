@@ -66,6 +66,10 @@ namespace NEXUS.Services
 
         public List<user_profile> GetListUserProfile(string search)
         {
+            if (Equals(search,null))
+            {
+                search = "";
+            }
             return UserProfileRepository.FindBy(p => p.phone_number.ToString().Contains(search) || p.full_name.Contains(search) || p.email.Contains(search)).ToList();
         }
 

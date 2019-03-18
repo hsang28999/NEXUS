@@ -82,6 +82,10 @@ namespace NEXUS.Services
 
         public List<product> GetListProducts(string search)
         {
+            if (Equals(search, null))
+            {
+                search = "";
+            }
             return ProductRepository.FindBy(p => p.status == 1 && (Equals(search, null) || p.product_name.Equals(search))).ToList();
         }
 
