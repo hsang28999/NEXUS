@@ -106,12 +106,12 @@ namespace NEXUS
             );
             routes.MapRoute(
                 name: "Employee",
-                url: "employee",
+                url: "admin/employee",
                 defaults: new { controller = "Home", action = "Employee", id = UrlParameter.Optional }
             );
             routes.MapRoute(
                 name: "EmployeeDetail",
-                url: "employee-detail/{id}",
+                url: "admin/employee-detail/{id}",
                 defaults: new { controller = "Home", action = "EmployeeDetail", id = UrlParameter.Optional }
             );
             routes.MapRoute(
