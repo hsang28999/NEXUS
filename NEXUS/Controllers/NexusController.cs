@@ -339,9 +339,13 @@ namespace NEXUS.Controllers
         [Route("CreateStore")]
         public void CreateStore(StoreModel model)
         {
-            var Store = new store()
+            var Store = _service.GetStoreByName(model.Name);
+            if (!Equals(Store, null))
             {
-                store_id = 0,
+                ExceptionContent(HttpStatusCode.Unauthorized, "err_phone_number_already_existed");
+            }
+            Store = new store()
+            {
                 name = model.Name,
                 store_address = model.Address,
                 status = 1
