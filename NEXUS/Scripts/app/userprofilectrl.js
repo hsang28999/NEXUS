@@ -37,6 +37,13 @@
         }
         xhrService.get("GetUserProfile/" + user.Id).then(function (data) {
             xhrService.post("SaveUserProfile/" + user.Id, dataSend).then(function (data) {
+                var scope = angular.element('div[ng-controller="MainCtrl"]').scope();
+                $timeout(function () {
+                    scope.dispName = $scope.fullname;
+                    scope.$apply();
+                }, 0);
+                user.FullName = $scope.fullname;
+                localStorage.setItem('user', JSON.stringify(user));
                 toastr.success('Save done !', 'Success');
                 setTimeout(() => {
                     window.location.href = "/user-profile";
