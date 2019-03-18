@@ -13,8 +13,8 @@ function MainCtrl($scope, $rootScope, $stateParams, $location, $timeout, xhrServ
             $scope.showInfoLog = true;
         }
         else {
-            myEl = angular.element(document.querySelector('.username'));
-            myEl.html(user.FullName);
+            $scope.dispRole = user.Role;
+            $scope.dispName = user.FullName;
             $scope.showBtnLog = true;
             $scope.showInfoLog = false;
         }

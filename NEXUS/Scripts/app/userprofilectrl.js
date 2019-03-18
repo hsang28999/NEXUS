@@ -2,48 +2,70 @@
     var user = JSON.parse(localStorage.getItem('user'));
     $scope.loadUserProfile = function () {
         xhrService.get("GetUserProfile/" + user.Id).then(function (data) {
-            console.log(data);
-            angular.element(document.querySelector('.liID')).html(data.data.Id + ".");
-            angular.element(document.querySelector('.liFullName')).html(data.data.FullName + ".");
-            angular.element(document.querySelector('.liPhoneNumber')).html(data.data.PhoneNumber + ".");
-            angular.element(document.querySelector('.liMoney')).html(data.data.Money + " $.");
-            angular.element(document.querySelector('.liEmail')).html(data.data.Email + ".");
-            angular.element(document.querySelector('.liAddress')).html(data.data.Address + "­­.");
+            $scope.userIF = data.data;
         }, function (error) {
             toastr.error(error.statusText, 'Error');
         });
 
-        $scope.ul1 = true;
-        $scope.ul2 = false;
-        $scope.ul3 = false;
+        $scope.showTab = true;
+        $scope.showForm = false;
+        $scope.showForm2 = false;
     }
 
-    $scope.showul1 = function () {
-        $scope.ul1 = true;
-        $scope.ul2 = false;
-        $scope.ul3 = false;
-    }
-
-    $scope.showul2 = function () {
+    $scope.displayUpdate = function () {
         xhrService.get("GetUserProfile/" + user.Id).then(function (data) {
-            $scope.ID = data.data.Id;
-            $scope.FullName = data.data.FullName;
-            $scope.PhoneNumber = data.data.PhoneNumber;
-            $scope.Money = data.data.Money;
-            $scope.Email = data.data.Email;
-            $scope.Address = data.data.Address;
+            $scope.fullname = data.data.FullName;
+            $scope.email = data.data.Email;
+            $scope.address = data.data.Address;
+            $scope.gender = data.data.Gender;
         }, function (error) {
             toastr.error(error.statusText, 'Error');
         });
-        $scope.ul1 = false;
-        $scope.ul2 = true;
-        $scope.ul3 = false;
+
+        $scope.showTab = false;
+        $scope.showForm = true;
+        $scope.showForm2 = false;
     }
 
-    $scope.showul3 = function () {
-        $scope.ul1 = false;
-        $scope.ul2 = false;
-        $scope.ul3 = true;
+    $scope.Update = function () {
+        var gend = document.getElementById('gender');
+        var dataSend = {
+            "Email": $scope.email,
+            "FullName": $scope.fullname,
+            "Gender": gend.value,
+            "Address": $scope.address
+        }
+        xhrService.get("GetUserProfile/" + user.Id).then(function (data) {
+            xhrService.post("SaveUserProfile/" + user.Id, dataSend).then(function (data) {
+                toastr.success('Save done !', 'Success');
+                setTimeout(() => {
+                    window.location.href = "/user-profile";
+                }, 2000);
+            }, function (error) {
+                toastr.error(error.statusText, 'Error');
+            });
+        }, function (error) {
+            toastr.error(error.statusText, 'Error');
+        });
+    }
+
+    $scope.displayInfo = function () {
+
+        xhrService.get("GetUserProfile/" + user.Id).then(function (data) {
+            $scope.userIF = data.data;
+        }, function (error) {
+            toastr.error(error.statusText, 'Error');
+        });
+
+        $scope.showTab = true;
+        $scope.showForm = false;
+        $scope.showForm2 = false;
+    }
+
+    $scope.displayChangePass = function () {
+        $scope.showTab = false;
+        $scope.showForm = false;
+        $scope.showForm2 = true;
     }
 }
 app.controller('UserProfileCtrl', UserProfileCtrl);
