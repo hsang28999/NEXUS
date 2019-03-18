@@ -2,7 +2,7 @@
     <div class="header-homepage">
         <a  ui-sref="home.index">
             <div class="logo-header">
-                <img src="https://i.imgur.com/QDKpQct.png" alt="Alternate Text" />
+                <img src="../Content/Admin/images/logo/logo1.png"/>
             </div>
         </a>
         <div class="btn-header">
@@ -11,7 +11,7 @@
         <div class="loginsucess" ng-hide="showInfoLog">
             <div class="dropdown">
                 <div class="nameacc dropdown-toggle" data-toggle="dropdown">
-                    User : <span class="username"></span>
+                    User : <span class="">{{dispName}}</span>
                     <span class="caret"></span>
                 </div>
                 <ul class="dropdown-menu">
@@ -21,29 +21,35 @@
                 </ul>
             </div>
             <div class="position">
-                Position : <span class="positionname">Customer</span>
+                <div ng-if="dispRole == 1">Position : <span class="positionname">Customer</span></div>
+            </div>
+            <div class="position">
+                <div ng-if="dispRole != 1">Position : <span class="positionname">Admin</span></div>
             </div>
         </div>
         <div class="aboutus">
-            <a ui-sref="home.aboutus">AboutUs</a> |
-            <a ui-sref="home.product">Services</a>
+            <a ui-sref="home.aboutus">AboutUs</a> 
+            <a ui-sref="home.product">|&nbsp;Services</a>
         </div>
     </div>
-    <div ui-view></div>
+    <div class="card-panel">
+        <div ui-view></div>
+    </div>
+  
     <div class="footer-homepage">
-        <div class="ft-text">
+        <!--<div class="ft-text">
             Copyright 3TSD © 2019
+        </div>-->
+        <div class="ft-logo">
+            <img src="../Content/Admin/images/logo/logo3.png" alt="Alternate Text" />
         </div>
-        @*<div class="ft-logo">
-            <img src="https://i.imgur.com/QDKpQct.png" alt="Alternate Text" />
-        </div>*@
     </div>
     <div id="loginmodal" class="modal " role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="main-modal-log">
                     <div class="logo-modal-log">
-                        <img src="https://i.imgur.com/QDKpQct.png" alt="Alternate Text" />
+                        <img src="../Content/Admin/images/logo/logo3.png" alt="Alternate Text" />
                     </div>
                     <div class="formm" ng-hide="displayLogin">
                         <form name="userForm" ng-submit="register()" class="form form-res" novalidate>
@@ -56,7 +62,7 @@
                                 <span ng-show="userForm.nregemail.$invalid && !userForm.nregemail.$pristine" class="alert alert-danger help-block">Enter a valid email.</span>
                                 <input class="form-control" type="password" name="nregpass" value="" placeholder="Password" ng-model='regpass' required ng-minlength="6" />
                                 <span ng-show="userForm.nregpass.$invalid && !userForm.nregpass.$pristine" class="alert alert-danger help-block">Password must be greater than 5 characters</span>
-                                <button ng-disabled="userForm.$invalid" type="submit" class="form-control btn-success btn-res-modal">Hoàn Tất</button>
+                                <button ng-disabled="userForm.$invalid" type="submit" class="form-control btn-res-modal">Hoàn Tất</button>
                             </div>
                         </form>
                         <p>Nếu đã có tài khoản vui lòng <span ng-click="displayLogin = !displayLogin" id="modaldis-res">Đăng Nhập</span> !</p>
@@ -68,7 +74,7 @@
                                 <span ng-show="LoguserForm.nlogphone.$invalid && !LoguserForm.nlogphone.$pristine" class="alert alert-danger help-block">Enter Number Phone</span>
                                 <input class="form-control" type="password" name="nlogpass" value="" placeholder="Mật khẩu" ng-model='logpass' required />
                                 <span ng-show="LoguserForm.nlogpass.$invalid && !LoguserForm.nlogpass.$pristine" class="alert alert-danger help-block">Enter Password</span>
-                                <button ng-disabled="LoguserForm.$invalid" type="submit" class="form-control btn-success btn-login-modal">Đăng Nhập</button>
+                                <button ng-disabled="LoguserForm.$invalid" type="submit" class="form-control btn-login-modal">Đăng Nhập</button>
                             </div>
                         </form>
                         <p>Nếu chưa có tài khoản vui lòng <span ng-click="displayLogin = !displayLogin" id="modaldis-login">Đăng Ký</span> !</p>

@@ -1,5 +1,5 @@
 ﻿.title {
-    background-color: #074cff !important;
+    background: linear-gradient(to right, #038ad1 0%, #25c4da 100%) !important;
     color: #fff !important;
     font-size: 20px;
 }
@@ -31,7 +31,7 @@
 }
 
 .panelHeight {
-    height: 570px;
+    height: 620px;
 }
 
 .deposit strong {
