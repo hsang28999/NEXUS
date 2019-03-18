@@ -70,9 +70,16 @@ namespace NEXUS.Services
             {
                 search = "";
             }
-            return UserProfileRepository.FindBy(p => p.phone_number.ToString().Contains(search) || p.full_name.Contains(search) || p.email.Contains(search)).ToList();
+            return UserProfileRepository.FindBy(p => p.role == 1 && (p.phone_number.ToString().Contains(search) || p.full_name.Contains(search) || p.email.Contains(search))).ToList();
         }
-
+        public List<user_profile> GetListEmployee(string search)
+        {
+            if (Equals(search, null))
+            {
+                search = "";
+            }
+            return UserProfileRepository.FindBy(p => p.role > 1 && (p.phone_number.ToString().Contains(search) || p.full_name.Contains(search) || p.email.Contains(search))).ToList();
+        }
         public void SaveUserProfile(user_profile model)
         {
             UserProfileRepository.Save(model);

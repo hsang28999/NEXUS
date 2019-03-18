@@ -323,6 +323,29 @@ namespace NEXUS.Controllers
         }
 
         [HttpGet]
+        [Route("GetListEmployee/{page}/{search?}")]
+        public PagingResult<UserModel> GetListEmployee(int page, string search = null)
+        {
+            var users = _service.GetListEmployee(search);
+            var userList = users.Skip((page - 1) * 10).Take(10).Select(p => new UserModel()
+            {
+                PhoneNumber = p.phone_number,
+                FullName = p.full_name,
+                Role = p.role,
+                Id = p.user_id,
+                Address = p.address,
+                Gender = p.gender,
+                Birthday = p.birthday,
+                Email = p.email
+            }).ToList();
+            return new PagingResult<UserModel>()
+            {
+                total = users.Count,
+                data = userList
+            };
+        }
+
+        [HttpGet]
         [Route("GetEmployeeDetail/{id}")]
         public EmployeeModel GetEmployeeDetail(int id)
         {
