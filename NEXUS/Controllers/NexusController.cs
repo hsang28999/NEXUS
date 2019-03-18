@@ -436,8 +436,12 @@ namespace NEXUS.Controllers
                     ExceptionContent(HttpStatusCode.InternalServerError, "employee_or_store_not_exist");
                 }
 
-                EmployeeStore.store_id = model.StoreId;
-                _service.SaveEmployeeStore(EmployeeStore);
+                if (!Equals(EmployeeStore,null))
+                {
+                    EmployeeStore.store_id = model.StoreId;
+                    _service.SaveEmployeeStore(EmployeeStore);
+                }
+                
 
                 EmployeeProfile.full_name = model.FullName;
                 EmployeeProfile.address = model.Address;
