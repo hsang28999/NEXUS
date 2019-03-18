@@ -54,7 +54,13 @@
             {
                 url: "about-us",
                 templateUrl: "html/aboutus.html"
-            })
+        })
+            .state('home.feedback',
+                {
+                    url: "feedback",
+                    templateUrl: "html/feedback.html"
+        })
+
         .state('login',
             {
                 url: "/login",
@@ -66,6 +72,16 @@
                 abstract: true,
                 templateUrl: "html/admin.html"
         })
+        .state('admin.employee',
+                {
+                    url: "/employeee?page&search",
+                    templateUrl: "html/employee.html"
+        })
+            .state('admin.employeedetail',
+                {
+                    url: "/employeee-detail/{id}",
+                    templateUrl: "html/employee.html"
+                })
             .state('admin.dashboard',
                 {
                     url: "",
@@ -73,7 +89,7 @@
                 })
         .state('admin.contract',
             {
-                url: "/contract",
+                url: "/contract?page&search",
                 templateUrl: "html/contract.html"
             })
         .state('admin.contractdetail',
@@ -83,7 +99,7 @@
             })
         .state('admin.product',
             {
-                url: "/product",
+                url: "/product?page&search",
                 templateUrl: "html/adminproduct.html"
             })
         .state('admin.productdetail',
@@ -93,7 +109,7 @@
             })
         .state('admin.user',
             {
-                url: "/user",
+                url: "/user?page&search",
                 templateUrl: "html/user.html"
             })
         .state('admin.userdetail',
@@ -103,7 +119,7 @@
             })
         .state('admin.shop',
             {
-                url: "/shop",
+                url: "/shop?page&search",
                 templateUrl: "html/shop.html"
             })
         .state('admin.shopdetail',

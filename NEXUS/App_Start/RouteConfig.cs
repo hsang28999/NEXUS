@@ -100,6 +100,21 @@ namespace NEXUS
                 defaults: new { controller = "Home", action = "Login", id = UrlParameter.Optional }
             );
             routes.MapRoute(
+                name: "Feedback",
+                url: "feedback",
+                defaults: new { controller = "Home", action = "Feedback", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Employee",
+                url: "employee",
+                defaults: new { controller = "Home", action = "Employee", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "EmployeeDetail",
+                url: "employee-detail/{id}",
+                defaults: new { controller = "Home", action = "EmployeeDetail", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
                 name: "Dashboard",
                 url: "admin",
                 defaults: new { controller = "Home", action = "Dashboard", id = UrlParameter.Optional }
@@ -110,6 +125,7 @@ namespace NEXUS
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Homepage", id = UrlParameter.Optional }
             );
+
 
         }
     }

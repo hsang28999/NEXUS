@@ -116,5 +116,23 @@ namespace NEXUS.Controllers
 
             return View();
         }
+        public ActionResult Feedback()
+        {
+            ViewBag.Title = "Feedback";
+
+            return View();
+        }
+        public ActionResult Employee()
+        {
+            ViewBag.Title = "Employee";
+
+            return View();
+        }
+        public ActionResult EmployeeDetail()
+        {
+            ViewBag.Title = "Employee Detail";
+
+            return View();
+        }
     }
 }

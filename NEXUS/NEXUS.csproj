@@ -328,6 +328,9 @@
     <Content Include="html\contract.html" />
     <Content Include="html\contractdetail.html" />
     <Content Include="html\dashboard.html" />
+    <Content Include="html\employee.html" />
+    <Content Include="html\employeedetail.html" />
+    <Content Include="html\feedback.html" />
     <Content Include="html\history.html" />
     <Content Include="html\home.html" />
     <Content Include="html\index.html" />
@@ -427,6 +430,9 @@
     <Content Include="Views\Home\ShopDetail.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Dashboard.cshtml" />
+    <Content Include="Views\Home\Feedback.cshtml" />
+    <Content Include="Views\Home\Employee.cshtml" />
+    <Content Include="Views\Home\EmployeeDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
