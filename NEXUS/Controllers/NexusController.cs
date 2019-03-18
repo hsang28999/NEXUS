@@ -349,27 +349,34 @@ namespace NEXUS.Controllers
         [Route("GetEmployeeDetail/{id}")]
         public EmployeeModel GetEmployeeDetail(int id)
         {
-            //var employee = _service.GetUserProfileById(id);
+            var employee = _service.GetUserProfileById(id);
             var store_employee = _service.GetListStoreByEmployeeId(id);
-            return new EmployeeModel()
+            var employeemodel = new EmployeeModel()
             {
-                PhoneNumber = store_employee.user.user_profile.FirstOrDefault().phone_number,
-                FullName = store_employee.user.user_profile.FirstOrDefault().full_name,
-                Role = store_employee.user.user_profile.FirstOrDefault().role,
-                Id = store_employee.user.user_profile.FirstOrDefault().user_id,
-                Address = store_employee.user.user_profile.FirstOrDefault().address,
-                Gender = store_employee.user.user_profile.FirstOrDefault().gender,
-                Birthday = store_employee.user.user_profile.FirstOrDefault().birthday,
-                Email = store_employee.user.user_profile.FirstOrDefault().email,
-                StoreId = store_employee.store.store_id,
+                PhoneNumber = employee.phone_number,
+                FullName = employee.full_name,
+                Role = employee.role,
+                Id = employee.user_id,
+                Address = employee.address,
+                Gender = employee.gender,
+                Birthday = employee.birthday,
+                Email = employee.email,
+                StoreId = 0,
                 Store = new StoreModel()
+            };
+            if (!Equals(store_employee,null))
+            {
+                employeemodel.StoreId = store_employee.store.store_id;
+                employeemodel.Store = new StoreModel()
                 {
                     Name = store_employee.store.name,
                     Address = store_employee.store.store_address,
                     Status = store_employee.store.status,
                     StoreId = store_employee.store.store_id
-                }
-            };
+                };
+            }
+
+            return employeemodel;
 
         }
 
