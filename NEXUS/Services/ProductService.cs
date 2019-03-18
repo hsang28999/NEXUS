@@ -112,6 +112,12 @@ namespace NEXUS.Services
             return EmployeeStoreRepository.FindBy(p => p.employee_id == id).Include(p => p.user.user_profile).Include(p => p.store).FirstOrDefault();
         }
 
+        public employee_store GetEmployeeStoreById(int EmployeeId,int StoreId)
+        {
+            return EmployeeStoreRepository.FindBy(p => p.employee_id == EmployeeId && p.store_id == StoreId)
+                .FirstOrDefault();
+        }
+
         public List<connection> GetListConnect()
         {
             return ConnectionRepository.GetAll().ToList();

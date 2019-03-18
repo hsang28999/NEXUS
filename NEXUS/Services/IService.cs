@@ -35,5 +35,6 @@ namespace NEXUS.Services
         List<store> GetListStore();
         void SaveStore(store model);
         void SaveEmployeeStore(employee_store model);
+        employee_store GetEmployeeStoreById(int EmployeeId, int StoreId);
     }
 }

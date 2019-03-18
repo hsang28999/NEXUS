@@ -323,6 +323,67 @@ namespace NEXUS.Controllers
         }
 
         [HttpGet]
+        [Route("GetEmployeeDetail/{id}")]
+        public EmployeeModel GetEmployeeDetail(int id)
+        {
+            //var employee = _service.GetUserProfileById(id);
+            var store_employee = _service.GetListStoreByEmployeeId(id);
+            return new EmployeeModel()
+            {
+                PhoneNumber = store_employee.user.user_profile.FirstOrDefault().phone_number,
+                FullName = store_employee.user.user_profile.FirstOrDefault().full_name,
+                Role = store_employee.user.user_profile.FirstOrDefault().role,
+                Id = store_employee.user.user_profile.FirstOrDefault().user_id,
+                Address = store_employee.user.user_profile.FirstOrDefault().address,
+                Gender = store_employee.user.user_profile.FirstOrDefault().gender,
+                Birthday = store_employee.user.user_profile.FirstOrDefault().birthday,
+                Email = store_employee.user.user_profile.FirstOrDefault().email,
+                StoreId = store_employee.store.store_id,
+                Store = new StoreModel()
+                {
+                    Name = store_employee.store.name,
+                    Address = store_employee.store.store_address,
+                    Status = store_employee.store.status,
+                    StoreId = store_employee.store.store_id
+                }
+            };
+
+        }
+
+        [HttpPost]
+        [Route("SaveEmployeeDetail/{id}")]
+        public void SaveEmployeeDetail(int id,EmployeeModel model)
+        {
+            using (TransactionScope scope = new TransactionScope())
+            {
+                var EmployeeStore = _service.GetEmployeeStoreById(model.Id,model.StoreId);
+                var EmployeeProfile = _service.GetUserProfileById(model.Id);
+                var Employee = _service.GetUserById(model.Id);
+                if (!Equals(EmployeeStore, null))
+                {
+                    ExceptionContent(HttpStatusCode.InternalServerError, "employee_or_store_not_exist");
+                }
+
+                EmployeeStore.store_id = model.StoreId;
+                _service.SaveEmployeeStore(EmployeeStore);
+
+                EmployeeProfile.full_name = model.FullName;
+                EmployeeProfile.address = model.Address;
+                EmployeeProfile.birthday = model.Birthday;
+                EmployeeProfile.email = model.Email;
+                EmployeeProfile.gender = model.Gender;
+                EmployeeProfile.role = model.Role;
+                Employee.email = model.Email;
+                Employee.role = model.Role;
+
+                _service.SaveUserProfile(EmployeeProfile);
+                _service.SaveUser(Employee);
+
+                scope.Complete();
+            }
+        }
+
+        [HttpGet]
         [Route("GetListProductAdmin/{page}/{search?}")]
         public PagingResult<ProductModel> GetListProductAdmin(int page,string search = null)
         {
@@ -362,6 +423,74 @@ namespace NEXUS.Controllers
                 ConnectionName = p.connection.connection_name
             }).ToList();
         }
+
+        [HttpGet]
+        [Route("GetProductDetail/{id}")]
+        public ProductModel GetProductDetail(int id)
+        {
+            var Product = _service.GetProductById(id);
+            return new ProductModel()
+            {
+                ConnectionGroupId = Product.connection_group_id,
+                TimeType = Product.time_type,
+                PpmMobile = Product.ppm_mobile,
+                PpmStd = Product.ppm_std,
+                TimeUsed = Product.time_used,
+                Type = Product.type,
+                Description = Product.description,
+                MonthAvailable = Product.month_available,
+                PpmLocal = Product.ppm_local,
+                Price = Product.price,
+                ProductName = Product.product_name,
+                ProductId = Product.product_id,
+                Status = Product.status
+            };
+        }
+
+        [HttpPost]
+        [Route("SaveProductDetail/{id}")]
+        public void SaveProductDetail(int id,ProductModel model)
+        {
+            var Product = _service.GetProductById(id);
+            Product.connection_group_id = model.ConnectionGroupId;
+            Product.time_type = model.TimeType;
+            Product.ppm_mobile = model.PpmMobile;
+            Product.ppm_std = model.PpmStd;
+            Product.time_used = model.TimeUsed;
+            Product.type = model.Type;
+            Product.description = model.Description;
+            Product.month_available = model.MonthAvailable;
+            Product.ppm_local = model.PpmLocal;
+            Product.price = model.Price;
+            Product.product_name = model.ProductName;
+            Product.product_id = model.ProductId;
+            Product.status = model.Status;
+            _service.SaveProduct(Product);
+        }
+
+        [HttpPost]
+        [Route("CreateProductDetail")]
+        public void CreateProductDetail(ProductModel model)
+        {
+            var Product = new product();
+            Product.connection_group_id = model.ConnectionGroupId;
+            Product.time_type = model.TimeType;
+            Product.ppm_mobile = model.PpmMobile;
+            Product.ppm_std = model.PpmStd;
+            Product.time_used = model.TimeUsed;
+            Product.type = model.Type;
+            Product.description = model.Description;
+            Product.month_available = model.MonthAvailable;
+            Product.ppm_local = model.PpmLocal;
+            Product.price = model.Price;
+            Product.product_name = model.ProductName;
+            Product.product_id = model.ProductId;
+            Product.status = model.Status;
+            Product.product_id = 0;
+            _service.SaveProduct(Product);
+        }
+
+
 
     }
 }
