@@ -47,5 +47,6 @@ namespace NEXUS.Services
         contract GetContractById(int id);
         void SaveContract(contract model);
         decimal GetSecurityDepositByProductId(int id);
+        List<contract> GetHistoryByUserId(int id);
     }
 }

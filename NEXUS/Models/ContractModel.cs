@@ -7,6 +7,9 @@ namespace NEXUS.Models
 {
     public class ContractModel
     {
+        public string CustomerName { get; set; }
+        public string StoreName { get; set; }
+        public string EmployeeName { get; set; }
         public int ContractId { get; set; }
         public int Status { get; set; }
         public string Note { get; set; }

@@ -42,5 +42,10 @@ namespace NEXUS.Services
         {
             ContractRepository.Save(model);
         }
+
+        public List<contract> GetHistoryByUserId(int id)
+        {
+            return ContractRepository.FindBy(p => p.user_id == id).ToList();
+        }
     }
 }

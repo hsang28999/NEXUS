@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Web;
 using System.Net;
@@ -700,7 +701,9 @@ namespace NEXUS.Controllers
                 StoreId = p.store_id,
                 TimeUsedAvailable = p.time_used_available,
                 UserId = p.user_id,
-                ProductType = p.product_type
+                ProductType = p.product_type,
+                CustomerName = p.user.user_profile.FirstOrDefault().full_name,
+                EmployeeName = p.user1.user_profile.FirstOrDefault().full_name
             }).ToList();
         }
 
@@ -752,6 +755,7 @@ namespace NEXUS.Controllers
             var Contract = _service.GetContractById(id);
             return new ContractModel()
             {
+                
                 PpmStd = Contract.ppm_std,
                 Status = Contract.status,
                 StartDate = Contract.start_date,
@@ -772,6 +776,7 @@ namespace NEXUS.Controllers
                 UserId = Contract.user_id,
                 ProductTimeUsed = Contract.product_time_used,
                 ContractId = Contract.contract_id
+
             };
         }
 
@@ -785,6 +790,36 @@ namespace NEXUS.Controllers
             _service.SaveContract(Contract);
         }
 
+        [HttpGet]
+        [Route("GetHistoryContract/{id}")]
+        public List<ContractModel> GetHistoryContract(int id)
+        {
+            return _service.GetHistoryByUserId(id).Select(Contract => new ContractModel()
+            {
+                PpmStd = Contract.ppm_std,
+                Status = Contract.status,
+                StartDate = Contract.start_date,
+                ProductId = Contract.product_id,
+                Address = Contract.address,
+                PpmLocal = Contract.ppm_local,
+                PpmMobile = Contract.ppm_mobile,
+                Price = Contract.price,
+                ProductName = Contract.product_name,
+                SecurityDeposit = Contract.security_deposit,
+                Note = Contract.note,
+                StoreId = Contract.store_id,
+                EmployeeId = Contract.employee_id,
+                ProductType = Contract.product_type,
+                TimeUsedAvailable = Contract.time_used_available,
+                SigningDate = Contract.signing_date,
+                EndDate = Contract.end_date,
+                UserId = Contract.user_id,
+                ProductTimeUsed = Contract.product_time_used,
+                ContractId = Contract.contract_id,
+                CustomerName = Contract.user.user_profile.FirstOrDefault().full_name,
+                EmployeeName = Contract.user1.user_profile.FirstOrDefault().full_name
+            }).ToList();
+        }
 
     }
 }
