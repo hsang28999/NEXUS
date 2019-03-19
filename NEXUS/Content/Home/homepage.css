@@ -137,6 +137,7 @@
 
 .loginsucess div {
     background-color: transparent !important;
+    color: white;
 }
 
 button[type="submit"]:disabled {

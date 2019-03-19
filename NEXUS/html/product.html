@@ -49,6 +49,13 @@
                 during the time of withdrawal or cancellation. In general it will be charged as
                 follows for the type of the connection
             </div>
+            <div class="note">
+                <i class="fas fa-gift"></i> If 10-15 connections are taken, you will be getting a discount of 25% in the advance and as well in the security deposit. If it is between 15-25 connections, then you will avail 50% discount and for 25-50 then you can avail 75% discount and if it is above 50 you will avail 100% discount.
+            </div>
+            <div class="note" ng-init="getListStore()">
+                <h5><i class="fas fa-store"></i> Come to our store and purchase by address:</h5>
+                <p ng-repeat ="store in ListStore"> <i style="font-size: 14px;" class="fas fa-arrow-right"></i> {{store.Address}}</p>
+            </div>
         </div>
     </div>
 </div>

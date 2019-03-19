@@ -13,6 +13,7 @@ function MainCtrl($scope, $rootScope, $stateParams, $location, $timeout, xhrServ
             $scope.showInfoLog = true;
         }
         else {
+            $scope.phoneNumber = user.PhoneNumber;
             $scope.dispRole = user.Role;
             $scope.dispName = user.FullName;
             $scope.showBtnLog = true;
@@ -74,6 +75,15 @@ function MainCtrl($scope, $rootScope, $stateParams, $location, $timeout, xhrServ
         }, function (error) {
             console.log(error);
             toastr.error(error.statusText, 'Error');
+        });
+    }
+
+    $scope.getListStore = function()
+    {
+        xhrService.get("GetListStore").then(function (data) {
+            $scope.ListStore = data.data;
+        }, function (error) {
+            console.log(error);
         });
     }
 

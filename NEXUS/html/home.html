@@ -1,8 +1,8 @@
-﻿<div class="main"  ng-controller="MainCtrl" ng-init="loadLayout()">
+﻿<div class="main" ng-controller="MainCtrl" ng-init="loadLayout()">
     <div class="header-homepage">
-        <a  ui-sref="home.index">
+        <a ui-sref="home.index">
             <div class="logo-header">
-                <img src="../Content/Admin/images/logo/logo1.png"/>
+                <img src="../Content/Admin/images/logo/logo1.png" />
             </div>
         </a>
         <div class="btn-header">
@@ -20,12 +20,13 @@
                     <li><a ng-click="Logout()" href=''>Logout</a></li>
                 </ul>
             </div>
+
             <div class="position">
-                <div ng-if="dispRole == 1">Role : <span class="positionname">Customer</span></div>
+                <div style="color:white" >Phone Number : <span class="positionname">{{phoneNumber}}</span></div>
             </div>
-            <div class="position">
+            <!--<div class="position">
                 <div ng-if="dispRole != 1">Role : <span class="positionname">Admin</span></div>
-            </div>
+            </div>-->
         </div>
         <div class="aboutus">
             <a ui-sref="home.aboutus">About Us</a>
@@ -36,7 +37,7 @@
     <div class="card-panel">
         <div ui-view></div>
     </div>
-  
+
     <div class="footer-homepage">
         <!--<div class="ft-text">
             Copyright 3TSD © 2019
@@ -71,7 +72,7 @@
                     <div class="formm" ng-hide="!displayLogin">
                         <form autocomplete="off" name="LoguserForm" ng-submit="login()" class="form form-log" novalidate>
                             <div class="form-group" ng-class="{ 'has-error' : LoguserForm.name.$invalid && !LoguserForm.name.$pristine }">
-                                <input class="form-control" type="text" name="nlogphone" value="" placeholder="Số Điện Thoại" ng-model='logphone' required/>
+                                <input class="form-control" type="text" name="nlogphone" value="" placeholder="Số Điện Thoại" ng-model='logphone' required />
                                 <span ng-show="LoguserForm.nlogphone.$invalid && !LoguserForm.nlogphone.$pristine" class="alert alert-danger help-block">Enter Number Phone</span>
                                 <input class="form-control" type="password" name="nlogpass" value="" placeholder="Mật khẩu" ng-model='logpass' required />
                                 <span ng-show="LoguserForm.nlogpass.$invalid && !LoguserForm.nlogpass.$pristine" class="alert alert-danger help-block">Enter Password</span>
@@ -79,6 +80,45 @@
                             </div>
                         </form>
                         <p>Nếu chưa có tài khoản vui lòng <span ng-click="displayLogin = !displayLogin" id="modaldis-login">Đăng Ký</span> !</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container margin-35" style="padding-bottom: 30px;">
+        <div class="col-xs-12 fix-pad">
+            <div class="col-xs-12"><a class="title-item"><span class="icon-title table-cell"><img alt="i-contract.png" src="https://fpt.vn/storage/upload/images/pages/intro/i-contract.png"></span><span class="table-cell">Liên hệ</span></a></div>
+
+            <div class="col-xs-12 col-sm-6 fix-pad add-contact-footer">
+                <div class="col-xs-6 no-pad-right">
+                    <p class="call-19006600">
+                        Tổng đài Chăm sóc khách hàng 24/7:<br><a class="phone-cc-large" href="tel:19006600">1900 6600</a><br><br>
+                        &nbsp;
+                    </p>
+                    
+                </div>
+
+                <div class="col-xs-6 no-pad-right" ng-init="getListStore()">
+                    <p class="icon-email"><b>Hòm thư Hỗ trợ khách hàng:</b><br><strong><a class="text-blue1" href="mailto:hotrokhachhang@nexus.com.vn">hotrokhachhang@nexus.com.vn</a></strong></p>
+
+                    <p class="icon-website"><b>Website chính thức:</b><br><strong><a class="text-blue1" href="http://www.nexus.vn">www.nexus.vn</a></strong></p>
+
+                    <p class="icon-fb"><b>Facebook chính thức:</b><br><strong><a class="text-blue1" href="https://www.facebook.com/nexus" target="_blank" rel="noreferrer noopener">www.facebook.com/nexus</a></strong></p>
+                   
+                        <p> Address:</p>
+                        <p ng-repeat="store in ListStore">- {{store.Address}}</p>
+                 
+                    </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 fix-pad">
+                <div class="col-xs-12 map-gray-bottom">
+                    <div class="col-xs-12 map-point no-pad-right">
+                        <p><strong>TRỤ SỞ:</strong></p>
+                        <div class="map">
+                            <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.095182298596!2d105.7795577144546!3d21.0288771931513!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454b3260b1a8b%3A0x862052392e3f478e!2zOCBUw7RuIFRo4bqldCBUaHV54bq_dCwgTeG7uSDEkMOsbmgsIFThu6sgTGnDqm0sIEjDoCBO4buZaSAxMDAwMCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1551783463887"></iframe>
+
+                        </div>
                     </div>
                 </div>
             </div>

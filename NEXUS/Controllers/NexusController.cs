@@ -75,6 +75,7 @@ namespace NEXUS.Controllers
                     Id = UserAccount.user_id,
                     FullName = UserProfile.full_name,
                     PhoneNumber = UserAccount.phone_number,
+                    Email = UserAccount.email,
                     UserCode = "UID_" + UserAccount.user_id.ToString().PadLeft(5, '0'),
                     Token = Encrypt.Base64Encode(JsonConvert.SerializeObject(token)),
                    Role = UserProfile.role
@@ -105,6 +106,7 @@ namespace NEXUS.Controllers
                 Id = UserAccount.user_id,
                 FullName = UserProfile.full_name,
                 PhoneNumber = UserAccount.phone_number,
+                Email = UserAccount.email,
                 UserCode = "UID_" + UserAccount.user_id.ToString().PadLeft(5, '0'),
                 Token = Encrypt.Base64Encode(JsonConvert.SerializeObject(token)),
                 Role = UserProfile.role
