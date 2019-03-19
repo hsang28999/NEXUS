@@ -75,7 +75,7 @@
     }
 
     $scope.Delete = function () {
-        toastr.error("Xoa CC", 'Loi');
+        toastr.error("dAnG phAt tRiEn ?", 'Loi');
     }
 }
 

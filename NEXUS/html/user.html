@@ -14,7 +14,6 @@
                             <th data-field="price">Email</th>
                             <th data-field="total">Phone Number</th>
                             <th data-field="total">Gender</th>
-                            <th data-field="status">Position</th>
                             <th data-field="status">Action</th>
                         </tr>
                     </thead>
@@ -26,7 +25,6 @@
                             <td>{{ user.PhoneNumber }}</td>
                             <td ng-if=" user.Gender == 1">Boy</td>
                             <td ng-if=" user.Gender != 1">Girl</td>
-                            <td>{{AllRole[user.Role-1].name}}</td>
                             <td>
                                 <a class='btn-info' ui-sref="admin.userdetail({id:{{user.Id}}})">
                                     <span class="glyphicon glyphicon-edit"></span>
