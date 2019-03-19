@@ -1,1 +1,40 @@
-﻿<h1>feedback detail</h1>
+﻿<div class="main" ng-controller="FeedbackdetailAPCtrl" ng-init="loadFeedbackdetailAP()">
+    <h4 class="header2"></h4>
+    <div class="row">
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input readonly ng-model="name" placeholder="Enter customer name" id="name2" type="text">
+                    <label for="first_name" class="active">Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input readonly ng-model="email" placeholder="john@domainname.com" id="email2" type="text">
+                    <label for="email" class="active">Email</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <select number-to-string ng-model="status">
+                        <option ng-repeat="status in AllStatus" value="{{ status.value }}">{{status.name}}</option>
+                        <option value="" disabled>Select Status</option>
+                    </select>
+                    <label for="position" class="active">Status</label>
+                </div>
+                <div class="row" ng-hide="btnUpdate">
+                    <div class="input-field col s12">
+                        <button ng-click="Update()" class="btn waves-effect waves-light right" type="submit" name="action">
+                            Submit
+                            <i class="material-icons right">send</i>
+                        </button>
+                        <button ng-click="Delete()" class="btn delBtn waves-effect waves-light right" type="submit" name="action">
+                            Remove
+                            <i class="material-icons right">delete_forever</i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,1 +1,38 @@
-﻿<h1>feedback</h1>
+﻿<div class="main" ng-controller="FeedbackAPCtrl" ng-init="loadFeedbackAP()">
+    <div id="responsive-table">
+        <div class="nametab">
+            <h4 class="header">Feedback</h4>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <table class="responsive-table">
+                    <thead>
+                        <tr>
+                            <th data-field="id">ID</th>
+                            <th data-field="name">Name</th>
+                            <th data-field="address">Email</th>
+                            <th data-field="address">Notes</th>
+                            <th data-field="address">Status</th>
+                            <th data-field="address">Action</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="fb in AllFeedbackAp">
+                            <td>{{ fb.FeedbackId }}</td>
+                            <td>{{ fb.CustomerName }}</td>
+                            <td>{{ fb.CustomerEmail }}</td>
+                            <td>{{ fb.Note }}</td>
+                            <td>{{AllStatus[fb.Status-1].name}}</td>
+                            <td>
+                                <a class='btn-info' ui-sref="admin.feedbackdetail({id:{{fb.FeedbackId}}})">
+                                    <span class="glyphicon glyphicon-edit"></span>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

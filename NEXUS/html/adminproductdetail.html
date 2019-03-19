@@ -1,1 +1,95 @@
-﻿<h1>product detail</h1>
+﻿<div class="main" ng-controller="ProductdetailAPCtrl" ng-init="loadProductdetailAP()">
+    <h4 class="header2"></h4>
+    <div class="row">
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input ng-model="name" placeholder="Enter ProductName" id="name2" type="text">
+                    <label for="first_name" class="active">ProductName</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input ng-model="des" placeholder="Enter Description" id="email2" type="text">
+                    <label for="text" class="active">Description</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input ng-model="price" placeholder="Enter Price" id="name2" type="text">
+                    <label for="first_name" class="active">Price</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <select number-to-string ng-model="type">
+                        <option ng-repeat="type in AllType" value="{{ type.value }}">{{type.name}}</option>
+                        <option disabled value="">Select Type</option>
+                    </select>
+                    <label for="position" class="active">TimeType</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input ng-model="timeused" placeholder="Enter TimeUsed" id="email2" type="text">
+                    <label for="email" class="active">TimeUsed</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input ng-model="ppmlocal" placeholder="Enter PpmLocal" id="name2" type="text">
+                    <label for="first_name" class="active">Price Per Minute Local</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input ng-model="ppmstd" placeholder="Enter PpmStd" id="name2" type="text">
+                    <label for="first_name" class="active">Price Per Minute Std</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input ng-model="ppmmobile" placeholder="Enter PpmMobile" id="name2" type="text">
+                    <label for="first_name" class="active">Price Per Minute Mobile</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <select number-to-string ng-model="group">
+                        <option ng-repeat="gr in AllGroup" value="{{ gr.ConnectionGroupId }}">{{gr.ConnectionName}} - {{gr.Name}}</option>
+                        <option disabled value="">Select Type</option>
+                    </select>
+                    <label for="position" class="active">ConnectionGroupId</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input ng-model="month" placeholder="Enter MonthAvailable" id="name2" type="text">
+                    <label for="first_name" class="active">MonthAvailable</label>
+                </div>
+            </div>
+            <div class="row" ng-hide="btnUpdate">
+                <div class="input-field col s12">
+                    <button ng-click="Update()" class="btn waves-effect waves-light right" type="submit" name="action">
+                        Submit
+                        <i class="material-icons right">send</i>
+                    </button>
+                    <button ng-click="Delete()" class="btn delBtn waves-effect waves-light right" type="submit" name="action">
+                        Remove
+                        <i class="material-icons right">delete_forever</i>
+                    </button>
+                </div>
+            </div>
+            <div class="row" ng-hide="btnAdd">
+                <div class="input-field col s12">
+
+                    <button ng-click="Add()" class="btn waves-effect waves-light right" type="submit" name="action">
+                        Submit
+                        <i class="material-icons right">send</i>
+                    </button>
+                    <span ng-show="msgErr" class="msgErr right">* Please enter full infomation</span>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
