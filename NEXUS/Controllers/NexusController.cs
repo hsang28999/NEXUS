@@ -516,6 +516,22 @@ namespace NEXUS.Controllers
             };
         }
 
+        [HttpGet]
+        [Route("GetFeedbackDetail/{id}")]
+        public FeedbackModel GetFeedbackDetail(int id)
+        {
+            var Feedback = _service.GetFeedbackById(id);
+            return new FeedbackModel()
+            {
+                Status = Feedback.status,
+                CustomerEmail = Feedback.customer_email,
+                CustomerName = Feedback.customer_name,
+                Note = Feedback.note,
+                FeedbackId = Feedback.feedback_id
+            };
+        }
+
+
         [HttpPost]
         [Route("CreateFeedback")]
         public void CreateFeedback(FeedbackModel model)
