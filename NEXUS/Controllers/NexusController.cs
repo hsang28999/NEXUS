@@ -569,7 +569,7 @@ namespace NEXUS.Controllers
         public PagingResult<ProductModel> GetListProductAdmin(int page,string search = null)
         {
             var products = _service.GetListProducts(search);
-            var listProduct = products.Skip((page - 1) * 10).Take(10).Select(p => new ProductModel()
+            var listProduct = products.Select(p => new ProductModel()
             {
                 ConnectionGroupId = p.connection_group_id,
                 TimeType = p.time_type,
