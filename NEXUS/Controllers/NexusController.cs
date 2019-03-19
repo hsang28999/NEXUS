@@ -599,6 +599,7 @@ namespace NEXUS.Controllers
             var connectionGroups = _service.GetListConnectionGroup();
             return connectionGroups.Select(p => new ConnectionGroupModel()
             {
+                ConnectionGroupId = p.connection_group_id,
                 Name = p.connection_group_name,
                 Bandwidth = p.bandwidth,
                 ConnectionName = p.connection.connection_name

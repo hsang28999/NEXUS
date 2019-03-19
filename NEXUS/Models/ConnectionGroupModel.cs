@@ -11,5 +11,6 @@ namespace NEXUS.Models
         public Nullable<int> Bandwidth { get; set; }
         public string Name { get; set; }
         public string ConnectionName { get; set; }
+        public int ConnectionGroupId { get; set; }
     }
 }
