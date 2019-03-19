@@ -1,1 +1,52 @@
-﻿<h1>shop detail</h1>
+﻿<div class="main" ng-controller="StoredetailAPCtrl" ng-init="loadStoredetailAP()">
+    <h4 class="header2"></h4>
+    <div class="row">
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input ng-model="name" placeholder="Enter store name" id="name2" type="text">
+                    <label for="name" class="active">Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input ng-model="address" placeholder="Enter store address" id="address" type="text">
+                    <label for="address" class="active">Address</label>
+                </div>
+            </div>
+            <div ng-hide="inpStatus" class="row">
+                <div class="input-field col s12">
+                    <select number-to-string ng-model="status">
+                        <option ng-repeat="status in AllStatus" value="{{ status.value }}">{{status.name}}</option>
+                        <option value="">Select Status</option>
+                    </select>
+                    <label for="position" class="active">Status</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="row" ng-hide="btnUpdate">
+                    <div class="input-field col s12">
+                        <button ng-click="Update()" class="btn waves-effect waves-light right" type="submit" name="action">
+                            Submit
+                            <i class="material-icons right">send</i>
+                        </button>
+                        <button ng-click="Delete()" class="btn delBtn waves-effect waves-light right" type="submit" name="action">
+                            Remove
+                            <i class="material-icons right">delete_forever</i>
+                        </button>
+                    </div>
+                </div>
+                <div class="row" ng-hide="btnAdd">
+                    <div class="input-field col s12">
+
+                        <button ng-click="Add()" class="btn waves-effect waves-light right" type="submit" name="action">
+                            Submit
+                            <i class="material-icons right">send</i>
+                        </button>
+                        <span ng-show="msgErr" class="msgErr right">* Please enter full infomation</span>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
