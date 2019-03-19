@@ -710,10 +710,13 @@ namespace NEXUS.Controllers
         {
             var Contract = _service.GetContractById(0);
             var Product = _service.GetProductById(model.ProductId);
-            if (Equals(Contract,null))
+            if (!Equals(Contract,null))
             {
                 ExceptionContent(HttpStatusCode.InternalServerError, "contract_exist");
             }
+
+            
+
             Contract = new contract()
             {
                 address = "",
@@ -735,9 +738,11 @@ namespace NEXUS.Controllers
                 time_used_available = Product.time_used,
                 user_id  = model.UserId,
                 start_date = model.StartDate,
-                end_date = ConvertDatetime.GetEndDateWithMonthUsed(model.StartDate,Product.month_available)
+                end_date = ConvertDatetime.GetEndDateWithMonthUsed(model.StartDate,Product.month_available),
+
             };
             _service.SaveContract(Contract);
+            
         }
 
         [HttpGet]
