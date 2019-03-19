@@ -628,7 +628,6 @@ namespace NEXUS.Controllers
             Product.ppm_local = model.PpmLocal;
             Product.price = model.Price;
             Product.product_name = model.ProductName;
-            Product.product_id = model.ProductId;
             Product.status = model.Status;
             _service.SaveProduct(Product);
         }
@@ -637,7 +636,12 @@ namespace NEXUS.Controllers
         [Route("CreateProductDetail")]
         public void CreateProductDetail(ProductModel model)
         {
-            var Product = new product();
+            var Product = _service.GetProductById(0);
+            if (!Equals(Product,null))
+            {
+                ExceptionContent(HttpStatusCode.InternalServerError, "product_exist");
+            }
+            Product = new product();
             Product.connection_group_id = model.ConnectionGroupId;
             Product.time_type = model.TimeType;
             Product.ppm_mobile = model.PpmMobile;
