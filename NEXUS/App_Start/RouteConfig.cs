@@ -119,6 +119,16 @@ namespace NEXUS
                 url: "admin",
                 defaults: new { controller = "Home", action = "Dashboard", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "AdminFeedback",
+                url: "admin/feedback",
+                defaults: new { controller = "Home", action = "AdminFeedback", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "AdminFeedbackDetail",
+                url: "admin/feedback-detail/{id}",
+                defaults: new { controller = "Home", action = "AdminFeedbackDetail", id = UrlParameter.Optional }
+            );
 
             routes.MapRoute(
                 name: "Default",

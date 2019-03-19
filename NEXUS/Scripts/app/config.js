@@ -126,7 +126,17 @@
             {
                 url: "/shop-detail/{id}",
                 templateUrl: "html/shopdetail.html"
-            })
+        })
+            .state('admin.feedback',
+                {
+                    url: "/feedback",
+                    templateUrl: "html/feedbackadmin.html"
+        })
+            .state('admin.feedbackdetail',
+                {
+                    url: "/feedback-detail/{id}",
+                    templateUrl: "html/feedbackdetailadmin.html"
+                })
         ;
 }
 

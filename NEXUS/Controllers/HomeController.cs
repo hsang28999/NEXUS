@@ -134,5 +134,17 @@ namespace NEXUS.Controllers
 
             return View();
         }
+        public ActionResult AdminFeedback()
+        {
+            ViewBag.Title = "Feedback";
+
+            return View();
+        }
+        public ActionResult AdminFeedbackDetail()
+        {
+            ViewBag.Title = "Feedback Detail";
+
+            return View();
+        }
     }
 }

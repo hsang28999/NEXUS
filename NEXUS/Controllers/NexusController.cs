@@ -452,6 +452,12 @@ namespace NEXUS.Controllers
         [Route("SaveEmployeeDetail/{id}")]
         public void SaveEmployeeDetail(int id,EmployeeModel model)
         {
+            //var EmployeeStore = _service.GetEmployeeStoreById(id, model.StoreId);
+            //var test = 0;
+            //if (Equals(EmployeeStore, null))
+            //{
+            //    test = 1;
+            //}
             using (TransactionScope scope = new TransactionScope())
             {
                 var EmployeeStore = _service.GetEmployeeStoreById(id, model.StoreId);
@@ -487,6 +493,8 @@ namespace NEXUS.Controllers
 
                 scope.Complete();
             }
+
+            //return test;
         }
 
         [HttpGet]
@@ -596,7 +604,7 @@ namespace NEXUS.Controllers
             _service.SaveProduct(Product);
         }
 
-
+        
 
     }
 }
