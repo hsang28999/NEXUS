@@ -20,5 +20,27 @@ namespace NEXUS.Services
                 return _contractRepository;
             }
         }
+
+        public List<contract> GetListContract(string search)
+        {
+            if (Equals(search,null))
+            {
+                search = "";
+            }
+            return ContractRepository.FindBy(p =>
+                p.user.phone_number.Contains(search) || p.user.email.Contains(search) || p.user1.email.Contains(search) ||
+                p.user1.phone_number.Contains(search) || p.store.name.Contains(search) ||
+                p.product_name.Contains(search)).ToList();
+        }
+
+        public contract GetContractById(int id)
+        {
+            return ContractRepository.FindBy(p => p.contract_id == id).FirstOrDefault();
+        }
+
+        public void SaveContract(contract model)
+        {
+            ContractRepository.Save(model);
+        }
     }
 }

@@ -75,5 +75,10 @@ namespace NEXUS.Helper
                 : (Math.Floor((double)(currentTime - time) / 3600) == 0 ? (Math.Ceiling((double)(currentTime - time) / 60) == 0 ? "vài giây trước" : Math.Ceiling((double)(currentTime - time) / 60) + " phút trước") : (Math.Floor((double)(currentTime - time) / 3600) + " giờ trước"));
         }
 
+        public static int GetEndDateWithMonthUsed(int StartDate, int MonthUsed)
+        {
+            return StartDate + (MonthUsed * 60 * 60 * 24 * 30);
+        }
+
     }
 }

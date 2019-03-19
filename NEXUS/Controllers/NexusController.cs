@@ -676,7 +676,110 @@ namespace NEXUS.Controllers
             _service.SaveProduct(Product);
         }
 
-        
+        [HttpGet]
+        [Route("GetListContract/{search?}")]
+        public List<ContractModel> GetListContract(string search = null)
+        {
+            return _service.GetListContract(search).Select(p => new ContractModel()
+            {
+                Status = p.status,
+                PpmStd = p.ppm_std,
+                PpmLocal = p.ppm_local,
+                PpmMobile = p.ppm_mobile,
+                ProductId = p.product_id,
+                ContractId = p.contract_id,
+                EmployeeId = p.employee_id,
+                EndDate = p.end_date,
+                StartDate = p.start_date,
+                SigningDate = p.signing_date,
+                ProductName = p.product_name,
+                ProductTimeUsed = p.product_time_used,
+                 SecurityDeposit = p.security_deposit,
+                Price = p.price,
+                Note = p.note,
+                StoreId = p.store_id,
+                TimeUsedAvailable = p.time_used_available,
+                UserId = p.user_id,
+                ProductType = p.product_type
+            }).ToList();
+        }
+
+        [HttpPost]
+        [Route("CreateContract")]
+        public void CreateContract(ContractModel model)
+        {
+            var Contract = _service.GetContractById(0);
+            var Product = _service.GetProductById(model.ProductId);
+            if (Equals(Contract,null))
+            {
+                ExceptionContent(HttpStatusCode.InternalServerError, "contract_exist");
+            }
+            Contract = new contract()
+            {
+                address = "",
+                contract_id = 0,
+                employee_id = model.EmployeeId,
+                note = model.Note,
+                ppm_local = model.PpmLocal,
+                ppm_mobile = model.PpmMobile,
+                ppm_std = model.PpmStd,
+                product_id = model.ProductId,
+                price = model.Price,
+                product_name = Product.product_name,
+                product_time_used = Product.time_used,
+                product_type = Product.time_type,
+                security_deposit = _service.GetSecurityDepositByProductId(model.ProductId),
+                signing_date = ConvertDatetime.GetCurrentUnixTimeStamp(),
+                status = 1,
+                store_id = model.StoreId,
+                time_used_available = Product.time_used,
+                user_id  = model.UserId,
+                start_date = model.StartDate,
+                end_date = ConvertDatetime.GetEndDateWithMonthUsed(model.StartDate,Product.month_available)
+            };
+            _service.SaveContract(Contract);
+        }
+
+        [HttpGet]
+        [Route("GetContractDetail/{id}")]
+        public ContractModel GetContractDetail(int id)
+        {
+            var Contract = _service.GetContractById(id);
+            return new ContractModel()
+            {
+                PpmStd = Contract.ppm_std,
+                Status = Contract.status,
+                StartDate = Contract.start_date,
+                ProductId = Contract.product_id,
+                Address = Contract.address,
+                PpmLocal = Contract.ppm_local,
+                PpmMobile = Contract.ppm_mobile,
+                Price = Contract.price,
+                ProductName = Contract.product_name,
+                SecurityDeposit = Contract.security_deposit,
+                Note = Contract.note,
+                StoreId = Contract.store_id,
+                EmployeeId = Contract.employee_id,
+                ProductType = Contract.product_type,
+                TimeUsedAvailable = Contract.time_used_available,
+                SigningDate = Contract.signing_date,
+                EndDate = Contract.end_date,
+                UserId = Contract.user_id,
+                ProductTimeUsed = Contract.product_time_used,
+                ContractId = Contract.contract_id
+            };
+        }
+
+        [HttpPost]
+        [Route("SaveContract/{id}")]
+        public void SaveContract(int id, ContractModel model)
+        {
+            var Contract = _service.GetContractById(id);
+            Contract.status = model.Status;
+            Contract.note = model.Note;
+            _service.SaveContract(Contract);
+        }
+
 
     }
 }

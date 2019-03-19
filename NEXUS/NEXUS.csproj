@@ -215,6 +215,7 @@
     <Compile Include="Models\contract.cs">
       <DependentUpon>NexusModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ContractModel.cs" />
     <Compile Include="Models\EmployeeModel.cs" />
     <Compile Include="Models\employee_store.cs">
       <DependentUpon>NexusModel.tt</DependentUpon>

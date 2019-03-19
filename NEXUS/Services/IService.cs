@@ -43,5 +43,9 @@ namespace NEXUS.Services
         List<feedback> GetListFeedback(string search);
         feedback GetFeedbackById(int id);
         void SaveFeedback(feedback model);
+        List<contract> GetListContract(string search);
+        contract GetContractById(int id);
+        void SaveContract(contract model);
+        decimal GetSecurityDepositByProductId(int id);
     }
 }

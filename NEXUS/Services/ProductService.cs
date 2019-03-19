@@ -181,13 +181,20 @@ namespace NEXUS.Services
 
         public void SaveStore(store model)
         {
-            _storeRepository.Save(model);
+            StoreRepository.Save(model);
         }
 
         public void SaveEmployeeStore(employee_store model)
         {
-            _employeeStoreRepository.Save(model);
+            EmployeeStoreRepository.Save(model);
         }
-        
+
+        public decimal GetSecurityDepositByProductId(int id)
+        {
+            var connectionGroupId =
+                ProductRepository.FindBy(p => p.product_id == id).FirstOrDefault().connection_group_id;
+            return ConnectionGroupRepository.FindBy(p => p.connection_group_id == connectionGroupId).FirstOrDefault()
+                .connection.security_deposit;
+        }
     }
 }
