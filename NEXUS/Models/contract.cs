@@ -34,14 +34,10 @@ namespace NEXUS.Models
         public string address { get; set; }
         public decimal security_deposit { get; set; }
         public int time_used_available { get; set; }
-        public int user_used { get; set; }
-        public string coupon_code { get; set; }
     
-        public virtual coupon coupon { get; set; }
         public virtual user user { get; set; }
         public virtual product product { get; set; }
         public virtual store store { get; set; }
         public virtual user user1 { get; set; }
-        public virtual user user2 { get; set; }
     }
 }

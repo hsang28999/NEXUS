@@ -498,6 +498,57 @@ namespace NEXUS.Controllers
         }
 
         [HttpGet]
+        [Route("GetListFeedback/{search?}")]
+        public PagingResult<FeedbackModel> GetListFeedback(string search = null)
+        {
+            var Feedbacks = _service.GetListFeedback(search);
+            return new PagingResult<FeedbackModel>()
+            {
+                total = Feedbacks.Count(),
+                data = Feedbacks.Select(p => new FeedbackModel()
+                {
+                    Status = p.status,
+                    CustomerEmail = p.customer_email,
+                    CustomerName = p.customer_name,
+                    Note = p.note,
+                    FeedbackId = p.feedback_id
+                }).ToList()
+            };
+        }
+
+        [HttpPost]
+        [Route("CreateFeedback")]
+        public void CreateFeedback(FeedbackModel model)
+        {
+            var Feedback = _service.GetFeedbackById(0);
+            if (!Equals(Feedback,null))
+            {
+                ExceptionContent(HttpStatusCode.InternalServerError, "employee_or_store_not_exist");
+            }
+            Feedback = new feedback()
+            {
+                feedback_id = 0,
+                status = 1,
+                customer_email = model.CustomerEmail,
+                customer_name = model.CustomerName,
+                note = model.Note
+            };
+            _service.SaveFeedback(Feedback);
+        }
+
+        [HttpPost]
+        [Route("SaveFeedback/{id}")]
+        public void SaveFeedback(int id,FeedbackModel model)
+        {
+            var Feedback = _service.GetFeedbackById(id);
+            //Feedback.customer_email = model.CustomerEmail;
+            //Feedback.customer_name = model.CustomerName;
+            //Feedback.note = model.Note;
+            Feedback.status = model.Status;
+            _service.SaveFeedback(Feedback);
+        }
+
+        [HttpGet]
         [Route("GetListProductAdmin/{page}/{search?}")]
         public PagingResult<ProductModel> GetListProductAdmin(int page,string search = null)
         {

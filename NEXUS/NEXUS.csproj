@@ -201,6 +201,9 @@
     <Compile Include="Helper\FormattedDbEntityValidationException .cs" />
     <Compile Include="Helper\HMTLHelperExtensions.cs" />
     <Compile Include="Helper\URL.cs" />
+    <Compile Include="Models\call.cs">
+      <DependentUpon>NexusModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\connection.cs">
       <DependentUpon>NexusModel.tt</DependentUpon>
     </Compile>
@@ -212,13 +215,14 @@
     <Compile Include="Models\contract.cs">
       <DependentUpon>NexusModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\coupon.cs">
-      <DependentUpon>NexusModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\EmployeeModel.cs" />
     <Compile Include="Models\employee_store.cs">
       <DependentUpon>NexusModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\feedback.cs">
+      <DependentUpon>NexusModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FeedbackModel.cs" />
     <Compile Include="Models\NexusModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

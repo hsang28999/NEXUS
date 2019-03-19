@@ -40,5 +40,8 @@ namespace NEXUS.Services
         store GetStoreById(int id);
         store GetStoreByName(string name);
         List<employee_store> GetListUserByStoreId(int id);
+        List<feedback> GetListFeedback(string search);
+        feedback GetFeedbackById(int id);
+        void SaveFeedback(feedback model);
     }
 }

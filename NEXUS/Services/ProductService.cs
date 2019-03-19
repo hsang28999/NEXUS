@@ -57,6 +57,18 @@ namespace NEXUS.Services
             }
         }
 
+        private GenericRepository<NEXUS.Models.feedback> _feedbackRepository;
+
+        public GenericRepository<NEXUS.Models.feedback> FeedbackRepository
+        {
+            get
+            {
+                if (this._feedbackRepository == null)
+                    this._feedbackRepository = new GenericRepository<feedback>(_context);
+                return _feedbackRepository;
+            }
+        }
+
         private GenericRepository<NEXUS.Models.employee_store> _employeeStoreRepository;
 
         public GenericRepository<NEXUS.Models.employee_store> EmployeeStoreRepository
@@ -86,7 +98,7 @@ namespace NEXUS.Services
             {
                 search = "";
             }
-            return ProductRepository.FindBy(p => p.status == 1 && (Equals(search, null) || p.product_name.Equals(search))).ToList();
+            return ProductRepository.FindBy(p => p.status == 1 && (Equals(search, null) || p.product_name.Contains(search))).ToList();
         }
 
         public List<product> GetListProductsByConnectionGroupId(int connection_group_id)
@@ -110,6 +122,27 @@ namespace NEXUS.Services
         public List<connection_group> GetListConnectionGroup()
         {
             return ConnectionGroupRepository.GetAll().ToList();
+        }
+
+        public List<feedback> GetListFeedback(string search)
+        {
+            if (Equals(search,null))
+            {
+                search = "";
+            }
+
+            return FeedbackRepository.FindBy(p =>
+                p.customer_email.Contains(search) || p.customer_name.Contains(search)).ToList();
+        }
+
+        public feedback GetFeedbackById(int id)
+        {
+            return FeedbackRepository.FindBy(p => p.feedback_id == id).FirstOrDefault();
+        }
+
+        public void SaveFeedback(feedback model)
+        {
+            FeedbackRepository.Save(model);
         }
         public employee_store GetListStoreByEmployeeId(int id)
         {

@@ -25,11 +25,12 @@ namespace NEXUS.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<call> call { get; set; }
         public virtual DbSet<connection> connection { get; set; }
         public virtual DbSet<connection_group> connection_group { get; set; }
         public virtual DbSet<contract> contract { get; set; }
-        public virtual DbSet<coupon> coupon { get; set; }
         public virtual DbSet<employee_store> employee_store { get; set; }
+        public virtual DbSet<feedback> feedback { get; set; }
         public virtual DbSet<order> order { get; set; }
         public virtual DbSet<product> product { get; set; }
         public virtual DbSet<product_store> product_store { get; set; }
