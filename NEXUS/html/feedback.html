@@ -1,5 +1,4 @@
-﻿0
-<head>
+﻿<head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         body {
@@ -22,7 +21,7 @@
         }
 
         input[type=submit] {
-            background-color: rgba(81, 0, 255, 1);
+            background: linear-gradient(to right, #038ad1 0%, #25c4da 100%);
             color: white;
             padding: 12px 20px;
             border: none;
@@ -45,27 +44,29 @@
 
         }
         .fback {
+            font-family: Arial;
             text-align: center;
-            color: rgba(81, 0, 255, 1);
+            color: #039be5;
             font-size: 50px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
 
-    <h3 class="fback">Feedback</h3>
+    <h3 class="fback">FEEDBACK</h3>
 
-    <div class="container-fback">
-        <form action="/action_page.php">
-            <label for="fname">Họ và tên :</label>
-            <input type="text" name="name" placeholder="nhập họ và tên ..">
+    <div class="container-fback" ng-controller="FeedbackCtrl" ng-init="loadFeedbackAP()">
+        <form ng-submit="sendFb()">
+            <label for="fname">Your Name :</label>
+            <input ng-model="name" type="text" name="name" placeholder="Enter your name">
 
-            <label for="lname">số điện thoại :</label>
-            <input type="text"  name="sdt" placeholder="nhập số điện thoại..">
+            <label for="lname">Email :</label>
+            <input ng-model="email" type="text"  name="email" placeholder="Enter your email">
 
 
-            <label for="subject">Nội dung :</label>
-            <textarea id="subject" name="subject" placeholder="nhập nội dung.." style="height:200px"></textarea>
+            <label for="subject">Notes :</label>
+            <textarea ng-model="note" id="subject" name="subject" placeholder="" style="height:200px"></textarea>
 
             <input type="submit" value="Submit">
         </form>

@@ -1,10 +1,10 @@
-﻿<div ng-controller="HistoryCtrl">
+﻿<div ng-controller="UserProfileCtrl" ng-init="loadHistory()">
     <div class="row">
         <div class="col s12">
             <table class="responsive-table">
                 <thead>
                     <tr>
-                        <th data-field="id">No</th>
+                        <th data-field="id">Contract ID</th>
                         <th data-field="name">Service Name</th>
                         <th data-field="price">Start Date</th>
                         <th data-field="total">End Date</th>
@@ -12,40 +12,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Doe</td>
-                        <td>01/01/2019</td>
-                        <td>02/02/2019</td>
-                        <td>john@example.com</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Doe</td>
-                        <td>01/01/2019</td>
-                        <td>02/02/2019</td>
-                        <td>john@example.com</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Doe</td>
-                        <td>01/01/2019</td>
-                        <td>02/02/2019</td>
-                        <td>john@example.com</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Doe</td>
-                        <td>01/01/2019</td>
-                        <td>02/02/2019</td>
-                        <td>john@example.com</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Doe</td>
-                        <td>01/01/2019</td>
-                        <td>02/02/2019</td>
-                        <td>john@example.com</td>
+                    <tr ng-repeat="history in History">
+                        <td>{{ history.ContractId }}</td>
+                        <td>{{ history.ProductName }}</td>
+                        <td>{{history.StartDate*1000 | date: 'dd-MM-yyyy'}}</td>
+                        <td>{{history.EndDate*1000 | date: 'dd-MM-yyyy'}}</td>
+                        <td>{{ history.Price }}</td>
                     </tr>
                 </tbody>
             </table>

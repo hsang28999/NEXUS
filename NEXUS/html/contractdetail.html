@@ -1,1 +1,160 @@
-﻿<h1>contract detail</h1>
+﻿<div class="main" ng-controller="ContractdetailAPCtrl" ng-init="loadContractdetailAP()">
+    <h4 class="header2"></h4>
+    <div class="row">
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <select ng-disabled="disuser" number-to-string ng-model="user">
+                        <option ng-repeat="user in AllUser" value="{{ user.Id }}">{{user.FullName}}</option>
+                        <option disabled value="">Select Customer</option>
+                    </select>
+                    <label for="position" class="active">Customer</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <select ng-disabled="disuser" number-to-string ng-model="product">
+                        <option ng-repeat="product in AllProduct" value="{{ product.ProductId }}">{{product.ProductName}} - {{ product.Description }}</option>
+                        <option disabled value="">Select Product</option>
+                    </select>
+                    <label for="position" class="active">Product</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <select ng-disabled="disuser" number-to-string ng-model="employee">
+                        <option ng-repeat="employee in AllEmployee" value="{{ employee.Id }}">{{employee.FullName}}</option>
+                        <option disabled value="">Select Employee</option>
+                    </select>
+                    <label for="position" class="active">Employee</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <select ng-disabled="disuser" number-to-string ng-model="store">
+                        <option ng-repeat="store in AllStore" value="{{ store.StoreId }}">{{store.Name}}</option>
+                        <option disabled value="">Select Shop</option>
+                    </select>
+                    <label for="position" class="active">Shop</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input ng-disabled="disuser" ng-model="price" placeholder="Enter Price" id="name2" type="text">
+                    <label for="first_name" class="active">Price</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input ng-disabled="disuser" type="date" name="start" ng-model="start"
+                           placeholder="dd-MM-yyyy" required />
+                    <label for="first_name" class="active">Start Date</label>
+                </div>
+            </div>
+            <div class="row" ng-hide="inpHide">
+                <div class="input-field col s12">
+                    <input ng-disabled="disuser" type="date" name="input" ng-model="end"
+                           placeholder="dd-MM-yyyy" required />
+                    <label for="first_name" class="active">End Date</label>
+                </div>
+            </div>
+            <div class="row" ng-hide="inpHide">
+                <div class="input-field col s12">
+                    <input ng-disabled="disuser" type="date" name="input" ng-model="signing"
+                           placeholder="yyyy-MM-dd" required />
+                    <label for="first_name" class="active">Signing Date</label>
+                </div>
+            </div>
+            <div class="row" ng-hide="inpHide">
+                <div class="input-field col s12">
+                    <input ng-disabled="disuser" ng-model="type" placeholder="Enter Product Type" id="name2" type="text">
+                    <label for="first_name" class="active">Product Type</label>
+                </div>
+            </div>
+            <div class="row" ng-hide="inpHide">
+                <div class="input-field col s12">
+                    <input ng-disabled="disuser" ng-model="time" placeholder="Enter Product Time Used" id="name2" type="text">
+                    <label for="first_name" class="active">Product Time Used</label>
+                </div>
+            </div>
+            <div class="row" ng-hide="inpHide">
+                <div class="input-field col s12">
+                    <input ng-disabled="disuser" ng-model="sec" placeholder="Enter SecurityDeposit" id="name2" type="text">
+                    <label for="first_name" class="active">SecurityDeposit</label>
+                </div>
+            </div>
+            <div class="row" ng-hide="inpHide">
+                <div class="input-field col s12">
+                    <input ng-disabled="disuser" ng-model="used" placeholder="Enter TimeUsedAvailable" id="name2" type="text">
+                    <label for="first_name" class="active">TimeUsedAvailable</label>
+                </div>
+            </div>
+            <div class="row" ng-hide="inpHide">
+                <div class="input-field col s12">
+                    <input ng-disabled="disuser" ng-model="address" placeholder="Enter Address" id="name2" type="text">
+                    <label for="first_name" class="active">Address</label>
+                </div>
+            </div>
+            <div class="row" ng-hide="inpHide">
+                <div class="input-field col s12">
+                    <input ng-disabled="disuser" ng-model="local" placeholder="Enter Price Per Minute Local" id="name2" type="text">
+                    <label for="first_name" class="active">Price Per Minute Local</label>
+                </div>
+            </div>
+            <div class="row" ng-hide="inpHide">
+                <div class="input-field col s12">
+                    <input ng-disabled="disuser" ng-model="std" placeholder="Enter Price Per Minute Std" id="name2" type="text">
+                    <label for="first_name" class="active">Price Per Minute Std</label>
+                </div>
+            </div>
+            <div class="row" ng-hide="inpHide">
+                <div class="input-field col s12">
+                    <input ng-disabled="disuser" ng-model="mobile" placeholder="Enter Price Per Minute Mobile" id="name2" type="text">
+                    <label for="first_name" class="active">Price Per Minute Mobile</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input ng-model="note" placeholder="Enter Note" id="name2" type="text">
+                    <label for="first_name" class="active">Note</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <select number-to-string ng-model="status">
+                        <option ng-repeat="status in AllStatus" value="{{ status.value }}">{{status.name}}</option>
+                        <option disabled value="">Select Status</option>
+                    </select>
+                    <label for="position" class="active">Status</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <div class="row" ng-hide="btnUpdate">
+                        <div class="input-field col s12">
+                            <button ng-click="Update()" class="btn waves-effect waves-light right" type="submit" name="action">
+                                Submit
+                                <i class="material-icons right">send</i>
+                            </button>
+                            <button ng-click="Delete()" class="btn delBtn waves-effect waves-light right" type="submit" name="action">
+                                Remove
+                                <i class="material-icons right">delete_forever</i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row" ng-hide="btnAdd">
+                        <div class="input-field col s12">
+
+                            <button ng-click="Add()" class="btn waves-effect waves-light right" type="submit" name="action">
+                                Submit
+                                <i class="material-icons right">send</i>
+                            </button>
+                            <span ng-show="msgErr" class="msgErr right">* Please enter full infomation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

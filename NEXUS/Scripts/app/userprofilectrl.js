@@ -12,6 +12,15 @@
         $scope.showForm2 = false;
     }
 
+    $scope.loadHistory = function () {
+        xhrService.get("GetHistoryContract/" + user.Id).then(function (data) {
+            $scope.History = data.data;
+            console.log(data.data);
+        }, function (error) {
+            toastr.error(error.statusText, 'Error');
+        });
+    }
+
     $scope.displayUpdate = function () {
         xhrService.get("GetUserProfile/" + user.Id).then(function (data) {
             $scope.fullname = data.data.FullName;
