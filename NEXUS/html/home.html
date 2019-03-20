@@ -64,22 +64,26 @@
                                 <span ng-show="userForm.nregemail.$invalid && !userForm.nregemail.$pristine" class="alert alert-danger help-block">Enter a valid email.</span>
                                 <input class="form-control" type="password" name="nregpass" value="" placeholder="Password" ng-model='regpass' required ng-minlength="6" />
                                 <span ng-show="userForm.nregpass.$invalid && !userForm.nregpass.$pristine" class="alert alert-danger help-block">Password must be greater than 5 characters</span>
-                                <button ng-disabled="userForm.$invalid" type="submit" class="form-control btn-res-modal">Hoàn Tất</button>
+                                <button ng-disabled="userForm.$invalid" type="submit" class="form-control btn-res-modal">Register</button>
                             </div>
                         </form>
-                        <p>Nếu đã có tài khoản vui lòng <span ng-click="displayLogin = !displayLogin" id="modaldis-res">Đăng Nhập</span> !</p>
+                        <p>
+                            If you already have an account <span ng-click="displayLogin = !displayLogin" id="modaldis-res">Login</span> !
+                        </p>
                     </div>
                     <div class="formm" ng-hide="!displayLogin">
                         <form autocomplete="off" name="LoguserForm" ng-submit="login()" class="form form-log" novalidate>
                             <div class="form-group" ng-class="{ 'has-error' : LoguserForm.name.$invalid && !LoguserForm.name.$pristine }">
-                                <input class="form-control" type="text" name="nlogphone" value="" placeholder="Số Điện Thoại" ng-model='logphone' required />
+                                <input class="form-control" type="text" name="nlogphone" value="" placeholder="User Name" ng-model='logphone' required />
                                 <span ng-show="LoguserForm.nlogphone.$invalid && !LoguserForm.nlogphone.$pristine" class="alert alert-danger help-block">Enter Number Phone</span>
-                                <input class="form-control" type="password" name="nlogpass" value="" placeholder="Mật khẩu" ng-model='logpass' required />
+                                <input class="form-control" type="password" name="nlogpass" value="" placeholder="Password" ng-model='logpass' required />
                                 <span ng-show="LoguserForm.nlogpass.$invalid && !LoguserForm.nlogpass.$pristine" class="alert alert-danger help-block">Enter Password</span>
-                                <button ng-disabled="LoguserForm.$invalid" type="submit" class="form-control btn-login-modal">Đăng Nhập</button>
+                                <button ng-disabled="LoguserForm.$invalid" type="submit" class="form-control btn-login-modal">Login</button>
                             </div>
                         </form>
-                        <p>Nếu chưa có tài khoản vui lòng <span ng-click="displayLogin = !displayLogin" id="modaldis-login">Đăng Ký</span> !</p>
+                        <p>
+                            If you do not already have an account <span ng-click="displayLogin = !displayLogin" id="modaldis-login">Register</span> !
+                        </p>
                     </div>
                 </div>
             </div>

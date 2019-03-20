@@ -67,8 +67,11 @@
             </div>
             <div class="row" ng-hide="inpHide">
                 <div class="input-field col s12">
-                    <input ng-disabled="disuser" ng-model="type" placeholder="Enter Product Type" id="name2" type="text">
-                    <label for="first_name" class="active">Product Type</label>
+                    <select ng-disabled="disuser" number-to-string ng-model="type">
+                        <option ng-repeat="type in AllType" value="{{ type.value }}">{{type.name}}</option>
+                        <option disabled value="">Select Type</option>
+                    </select>
+                    <label for="position" class="active">Time Type</label>
                 </div>
             </div>
             <div class="row" ng-hide="inpHide">
@@ -87,12 +90,6 @@
                 <div class="input-field col s12">
                     <input ng-disabled="disuser" ng-model="used" placeholder="Enter TimeUsedAvailable" id="name2" type="text">
                     <label for="first_name" class="active">TimeUsedAvailable</label>
-                </div>
-            </div>
-            <div class="row" ng-hide="inpHide">
-                <div class="input-field col s12">
-                    <input ng-disabled="disuser" ng-model="address" placeholder="Enter Address" id="name2" type="text">
-                    <label for="first_name" class="active">Address</label>
                 </div>
             </div>
             <div class="row" ng-hide="inpHide">

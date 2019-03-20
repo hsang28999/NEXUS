@@ -11,6 +11,14 @@
             { value: 2, name: "Close" }
         ];
 
+        $scope.AllRole = [
+            { value: 1, name: "Customer" },
+            { value: 2, name: "Sales" },
+            { value: 3, name: "Engineer" },
+            { value: 4, name: "Manager" },
+            { value: 5, name: "Admin" }
+        ];
+
         if (id == undefined || id == null || id == "") {
             $scope.btnUpdate = true;
             myEl.html("New Store");
@@ -22,6 +30,7 @@
                 $scope.name = data.data.Name;
                 $scope.address = data.data.Address;
                 $scope.status = data.data.Status;
+                $scope.ListEmp = data.data.ListUser;
             }, function (error) {
 
             });
