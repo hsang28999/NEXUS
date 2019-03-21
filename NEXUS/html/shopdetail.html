@@ -24,6 +24,12 @@
                 </div>
             </div>
             <div class="row">
+                <div class="input-field col s12">
+                    <label for="address" class="active">Employees</label><br />
+                    <p ng-repeat="emp in ListEmp">+ {{ emp.FullName }} - {{AllRole[emp.Role-1].name}}</p>
+                </div>
+            </div>
+            <div class="row">
                 <div class="row" ng-hide="btnUpdate">
                     <div class="input-field col s12">
                         <button ng-click="Update()" class="btn waves-effect waves-light right" type="submit" name="action">

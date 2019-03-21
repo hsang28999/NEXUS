@@ -20,9 +20,9 @@ function MainCtrl($scope, $rootScope, $stateParams, $location, $timeout, xhrServ
             $scope.showInfoLog = false;
         }
 
-        //if (user.Role != 1) {
-        //    window.location.href = "/admin";
-        //} 
+        if (user.Role != 1) {
+            window.location.href = "/admin";
+        } 
     }
 
     $scope.test = function() {

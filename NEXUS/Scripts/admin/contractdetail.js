@@ -34,7 +34,20 @@
             $scope.AllStore = data.data;
         }, function (error) {
 
-        });
+            });
+        
+        function getTextDayBySecond(second) {
+            var d = Number(second);
+            var h = Math.floor(d / 3600);
+            var m = Math.floor(d % 3600 / 60);
+            var s = Math.floor(d % 3600 % 60);
+
+            var hDisplay = h > 0 ? h + (h == 1 ? " hour " : " hours ") : "";
+            var mDisplay = m > 0 ? m + (m == 1 ? " ,minute " : " ,minutes ") : "";
+            var sDisplay = s > 0 ? s + (s == 1 ? " ,second" : " ,seconds") : "";
+
+            return hDisplay + mDisplay + sDisplay;
+        }
 
 
         $scope.AllType = [
@@ -50,7 +63,6 @@
         });
 
         if (id == undefined || id == null || id == "") {
-            $scope.start = new Date();
             $scope.btnUpdate = true;
             $scope.inpHide = true;
             $scope.btnAdd = false;
@@ -69,17 +81,18 @@
                 $scope.note = data.data.Note;
                 $scope.signing = new Date(data.data.SigningDate * 1000);
                 $scope.status = data.data.Status;
-                $scope.price = data.data.Price;
+                $scope.price = data.data.Price + " $";
                 $scope.start = new Date(data.data.StartDate * 1000);
                 $scope.end = new Date(data.data.EndDate * 1000);
                 $scope.type = data.data.ProductType;
-                $scope.time = data.data.ProductTimeUsed;
+                $scope.time = getTextDayBySecond(data.data.ProductTimeUsed);
                 $scope.local = data.data.PpmLocal;
                 $scope.std = data.data.PpmStd;
                 $scope.mobile = data.data.PpmMobile;
                 $scope.address = data.data.Address;
                 $scope.sec = data.data.SecurityDeposit;
-                $scope.used = data.data.TimeUsedAvailable;
+              
+                $scope.used = getTextDayBySecond(data.data.TimeUsedAvailable);
             }, function (error) {
 
             });
